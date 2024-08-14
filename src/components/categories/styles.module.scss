@@ -1,0 +1,36 @@
+.container {
+  max-width: 790px;
+  padding: 6px 0;
+  display: flex;
+  gap: 5px;
+  background: #fafafa;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 30px;
+  background: transparent;
+  font-weight: 500;
+
+  &__active {
+    transition: 200ms;
+    background: #ffffff;
+    box-shadow: 0px 4px 4px 0px #0000000d;
+    color: var(--orange-color);
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--orange-color);
+  }
+}

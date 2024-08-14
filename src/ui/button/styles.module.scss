@@ -1,0 +1,22 @@
+.button {
+    padding: 12px 15px 10px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    border: 1px solid #FE5F00;
+    border-radius: 15px;
+    background-color: transparent;
+    line-height: 20px;
+    color: var(--orange-color);
+    
+    &:hover {
+        color: #FFFFFF;
+        background-color: var(--orange-color);
+        transition: 300ms;
+        cursor: pointer;
+    }
+    
+    &:focus {
+        outline: 1px solid var(--orange-color)
+    }
+}
