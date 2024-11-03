@@ -1,0 +1,47 @@
+.filters__block {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.filters__container {
+    width: 215px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.inputs__container {
+    display: flex;
+    gap: 15px;
+}
+
+.intup__block {
+    position: relative;
+}
+
+.price__input {
+    width: 90px;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: 1px solid #F0F0F0;
+    background: transparent;
+
+    &:focus {
+        outline: 1px solid var(--orange-color);
+    }
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input__icon {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    color: #BBBBBB;
+}

@@ -1,4 +1,13 @@
+.topBar {
+    padding-bottom: 15px;
+    position: sticky;
+    top: 2px;
+    box-shadow: 0px 5px 5px 0px #0000000d;
+}
+
 .container {
+    max-width: 1312px;
     display: flex;
     justify-content: space-between;
+    margin: 0 auto;
 }

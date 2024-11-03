@@ -1,13 +1,16 @@
 import clsx from "clsx";
-import { Categories, TopBar } from "../../components";
+import { Filters, TopBar } from "../../components";
 import { Container } from "../../ui";
 import styles from './styles.module.scss'
 
 export function Home() {
     return <>
-        <Container>
+        <Container className={styles.title__container}>
             <h2 className={clsx('text_size_large', 'text', styles.home__title)}>Все пиццы</h2>
-            <TopBar />
+        </Container>
+        <TopBar />
+        <Container className={styles.container}>
+            <Filters />
         </Container>
     </>
 }

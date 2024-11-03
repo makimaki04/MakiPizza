@@ -4,7 +4,7 @@ import clsx from "clsx";
 
 interface ButtonProps {
   type: 'submit' | 'reset' | 'button';
-  children: ReactNode;
+  children?: ReactNode;
   onClick?: () => void;
   className?: string;
 }

@@ -4,9 +4,11 @@ import { Container } from "../../ui";
 
 export function TopBar() {
   return (
-    <Container className={styles.container}>
-      <Categories />
-      <SortPopup />
-    </Container>
+    <div className={styles.topBar}>
+      <Container className={styles.container}>
+        <Categories />
+        <SortPopup />
+      </Container>
+    </div>
   );
 }

@@ -3,7 +3,7 @@
   padding: 6px 0;
   display: flex;
   gap: 5px;
-  background: #fafafa;
+  background: var(--top-bar-background-color);
 }
 
 .category {
@@ -23,7 +23,9 @@
   }
 
   &:hover {
+    transition: 200ms;
     cursor: pointer;
+    color: var(--orange-color);
   }
 
   &:focus {

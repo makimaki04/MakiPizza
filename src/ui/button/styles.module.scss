@@ -1,7 +1,5 @@
 .button {
     padding: 12px 15px 10px;
-    display: flex;
-    gap: 8px;
     align-items: center;
     border: 1px solid #FE5F00;
     border-radius: 15px;
@@ -17,6 +15,10 @@
     }
     
     &:focus {
+        outline: none;
+    }
+
+    &:focus-visible {
         outline: 1px solid var(--orange-color)
     }
 }
