@@ -8,17 +8,29 @@
     width: 215px;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 25px;
 }
 
 .inputs__container {
     display: flex;
+    flex-direction: column;
     gap: 15px;
+
+    .flex__container {
+        display: flex;
+        gap: 15px;
+    }
+
+    .intup__block {
+        position: relative;
+    }
+
+    .inputs__container__title {
+        font-weight: 700;
+    }
 }
 
-.intup__block {
-    position: relative;
-}
+
 
 .price__input {
     width: 90px;

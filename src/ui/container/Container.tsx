@@ -1,5 +1,4 @@
-import React, { ReactNode } from "react";
-import styles from './styles.module.scss'
+import { ReactNode } from "react";
 import clsx from "clsx";
 
 interface ContainerProps {
