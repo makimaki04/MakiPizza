@@ -7,7 +7,7 @@ export interface ProductListProps {
 }
 
 export type Ingredient = {
-    id: number;
+    id: string;
     title: string;
     price: number;
     description: string;

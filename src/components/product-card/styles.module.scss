@@ -5,8 +5,52 @@
     position: relative;
 
     .image__container {
+        position: relative;
         background: #FFF;
-        border-radius:  30px 0 0 30px ;
+        border-radius:  30px 0 0 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .image {
+            margin: 4% 0 0 4%;
+            transition: width 300ms ease, height 300ms ease; 
+
+            &__small {
+                width: 300px;
+                height: 300px;
+            }
+
+            &__middle {
+                width: 375px;
+                height: 375px;
+            }
+
+            &__large {
+                width: 450px;
+                height: 450px;
+            }
+        }
+
+        .big__сircle {
+            width: 450px;
+            height: 450px;
+            border-radius: 50%;
+            border: 2px dotted #DEDEDE;
+            position: absolute;
+            top: 66px;
+            left: 27px;
+        }
+
+        .small__сircle {
+            width: 375px;
+            height: 375px;
+            border-radius: 50%;
+            border: 2px dotted #DEDEDE;
+            position: absolute;
+            top: 104px;
+            left: 65px;
+        }
     }
 
     .ingredients__container {

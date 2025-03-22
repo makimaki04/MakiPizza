@@ -22,11 +22,6 @@ export function ProductItem({ title, src, description, price, id, category }: Pr
         setCount(count + 1);
         setIsOpen(false);
     }
-
-    const handleAddClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        setCount(count + 1);
-    }
     
     const handleRemoveClick = (e: React.MouseEvent) => {
         e.stopPropagation();
@@ -81,7 +76,7 @@ export function ProductItem({ title, src, description, price, id, category }: Pr
                         <span className={clsx('text m-0 text_size_middle', styles.count)}>{count}</span>
                         <Button type='button' 
                             className={styles.count__button} 
-                            onClick={handleAddClick}
+                            onClick={() => setIsOpen(true)}
                         >
                             <Plus size={17}/>
                         </Button>

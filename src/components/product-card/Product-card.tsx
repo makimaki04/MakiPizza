@@ -4,6 +4,7 @@
     import clsx from "clsx";
     import { doughType, pizzaSize } from "../../constant/ingredients";
 import { X } from "lucide-react";
+import { useProductImage } from "../../hooks/useProductImage";
 
     export interface ProductCardProps {
         title: string;
@@ -25,23 +26,23 @@ import { X } from "lucide-react";
         1: "thin",
     }
 
-    export function ProductCard({ title, price, onAdd, onClose, category }: ProductCardProps) {
-        const [ sizeInd, setSizeInd ] = useState<{index: number, size: string}>({index: 1, size: 'middle'});
-        const [ doughInd, setDoughInd ] = useState<{index: number, type: string}>({index: 0, type: 'traditional'});
+    export function ProductCard({ id, title, price, onAdd, onClose, category }: ProductCardProps) {
+        const [ size, setSize ] = useState<{index: number, size: string}>({index: 1, size: 'middle'});
+        const [ dough, setDough ] = useState<{index: number, type: string}>({index: 0, type: 'traditional'});
 
-        const isThinDisabled = sizeInd.size === 'small';
+        const isThinDisabled = size.size === 'small';
 
         const handleSizeChange = useCallback((index: number) => {
             if (pizzaSizeMap[index] === 'small') {
-                setDoughInd({ index: 0, type: doughTypeMap[0] });
+                setDough({ index: 0, type: doughTypeMap[0] });
             }
 
-            setSizeInd({ index, size: pizzaSizeMap[index] });
+            setSize({ index, size: pizzaSizeMap[index] });
         }, []);
 
         const handleDoughChange = useCallback((index: number) => {
             if (isThinDisabled && doughTypeMap[index] === "thin") return;
-            setDoughInd({ index, type: doughTypeMap[index] });
+            setDough({ index, type: doughTypeMap[index] });
         }, [isThinDisabled]);
 
         useEffect(() => {
@@ -58,15 +59,42 @@ import { X } from "lucide-react";
             }
         }, []);
 
-        const sizeGliderPosition = `${139 * sizeInd.index}px`;
-        const doughGliderPosition = `${208 * doughInd.index}px`;
+        const sizeGliderPosition = `${139 * size.index}px`;
+        const doughGliderPosition = `${208 * dough.index}px`;
 
         const isPizza = category === 'pizza';
+
+        const isSmall = size.size === pizzaSizeMap[0];
+        const isMiddle = size.size === pizzaSizeMap[1];
+        const isLarge = size.size === pizzaSizeMap[2];
+
+        const { src } = useProductImage(id, size.size, dough.type);
 
         return (
             <Container className={styles.card__contaier}>
                 <Container className={styles.image__container}>
-                    <img src='' />
+                    {isPizza ? (
+                        <>
+                            <img 
+                            src={src} 
+                            alt={title} 
+                            className={clsx(styles.image, isSmall && styles.image__small, isMiddle && styles.image__middle, isLarge && styles.image__large)} 
+                            />
+                            {!isMiddle && !isLarge && 
+                                <span className={styles.small__сircle} />
+                            }
+                            {!isLarge &&
+                                <span className={styles.big__сircle} />
+                            }
+                        </>
+                    ) : (
+                        <img 
+                        src={src} 
+                        alt={title} 
+                        className={styles.image__large}
+                        />
+                    )
+                    }
                 </Container>
 
                 <Container className={styles.ingredients__container}>
@@ -93,7 +121,7 @@ import { X } from "lucide-react";
                                                 >
                                                     <input type='radio'
                                                     id={`size-${index}`}
-                                                    checked={sizeInd.index === index}
+                                                    checked={size.index === index}
                                                     />
                                                     {item.label}
                                                 </label>
@@ -120,7 +148,7 @@ import { X } from "lucide-react";
                                                 onClick={() => handleDoughChange(index)}
                                                 >
                                                     <input type='radio'
-                                                    checked={doughInd.index === index}
+                                                    checked={dough.index === index}
                                                     id={`dough-${index}`}
                                                     disabled={isThinDisabled && doughTypeMap[index] === 'thin'}
                                                     />
