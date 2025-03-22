@@ -3,17 +3,11 @@ import { Button, Container } from "../../ui";
 import styles from "./styles.module.scss";
 import { useState } from "react";
 
-const categories = [
-  "Пиццы",
-  "Комбо",
-  "Закуски",
-  "Коктейли",
-  "Кофе",
-  "Напитки",
-  "Десерты",
-];
+export interface CategoriesProps {
+  categories: string[];
+}
 
-export function Categories() {
+export function Categories({ categories }: CategoriesProps) {
     const [activeIndex, setActiveIndex] = useState<number>(0);
     
     const onClick = (index: number) => {

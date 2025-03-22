@@ -1,7 +1,8 @@
 import clsx from "clsx";
-import { Filters, TopBar } from "../../components";
+import { Filters, ProductList, TopBar } from "../../components";
 import { Container } from "../../ui";
 import styles from './styles.module.scss'
+import { pizza } from "../../constant/ingredients";
 
 export function Home() {
     return <>
@@ -11,6 +12,7 @@ export function Home() {
         <TopBar />
         <Container className={styles.container}>
             <Filters />
+            <ProductList products={pizza}></ProductList>
         </Container>
     </>
 }

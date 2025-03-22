@@ -1,9 +1,10 @@
 .container {
-  max-width: 790px;
-  padding: 6px 0;
+  max-width: 795x;
+  padding: 6px 5px;
   display: flex;
   gap: 5px;
   background: var(--top-bar-background-color);
+  border-radius: 20px;
 }
 
 .category {
