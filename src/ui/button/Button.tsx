@@ -5,7 +5,7 @@ import clsx from "clsx";
 interface ButtonProps {
   type: 'submit' | 'reset' | 'button';
   children?: ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   className?: string;
 }
 
