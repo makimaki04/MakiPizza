@@ -4,7 +4,7 @@
     import clsx from "clsx";
     import { doughType, pizzaSize } from "../../constant/ingredients";
 import { X } from "lucide-react";
-import { useProductImage } from "../../hooks/useProductImage";
+import { useProductInfo } from "../../hooks/useProductInfo";
 
     export interface ProductCardProps {
         title: string;
@@ -67,8 +67,13 @@ import { useProductImage } from "../../hooks/useProductImage";
         const isSmall = size.size === pizzaSizeMap[0];
         const isMiddle = size.size === pizzaSizeMap[1];
         const isLarge = size.size === pizzaSizeMap[2];
-
-        const { src } = useProductImage(id, size.size, dough.type);
+        
+        let src, description;
+        if (category === 'pizza') {
+            ({ src, description } = useProductInfo(id, size.size, dough.type));
+        } else {
+            ({ src, description } = useProductInfo(id));
+        }
 
         return (
             <Container className={styles.card__contaier}>
@@ -98,8 +103,10 @@ import { useProductImage } from "../../hooks/useProductImage";
                 </Container>
 
                 <Container className={styles.ingredients__container}>
-
-                    <h3 className={clsx('text_size_medium m-0 text')}>{title}</h3>
+                    <Container className={styles.title__container}>
+                        <h3 className={clsx('text_size_medium m-0 text')}>{title}</h3>
+                        <p className={clsx('text_size_small m-0 text', styles.description)}>{description.join(', ')}</p>
+                    </Container>
 
                     {isPizza && (
                         <>

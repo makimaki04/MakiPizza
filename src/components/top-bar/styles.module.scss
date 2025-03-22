@@ -1,8 +1,10 @@
 .topBar {
     padding: 10px 0;
     position: sticky;
-    top: 2px;
+    inset: 0;
     box-shadow: 0px 5px 5px 0px #0000000d;
+    background-color: #FFF;
+    z-index: 99999;
 }
 
 .container {
