@@ -2,8 +2,9 @@ import { useMemo } from "react"
 import { productsVariations } from "../constant/ingredients";
 
 interface ImageSrc {
-    src: string,
+    src: string;
     description: string[];
+    price: number;
 }
 
 enum productOptions {
@@ -12,13 +13,13 @@ enum productOptions {
     'small' = '25 см',
     'middle' = '30 см',
     'large' = '35 см',
-
 }
 
 export const useProductInfo = (id: string, size?: string, dough?: string): ImageSrc => {
     return useMemo(() => {
         const baseUrl = 'https://media.dodostatic.net/image';
         let imageName = '';
+        let price = 0;
         const description = [];
 
         if (size && dough) {
@@ -29,6 +30,9 @@ export const useProductInfo = (id: string, size?: string, dough?: string): Image
             if (pizza) {
                 imageName = pizza.img;
                 description.push(productOptions[pizza.size as keyof typeof productOptions], productOptions[pizza.doughType as keyof typeof productOptions], pizza.weight);
+                if (pizza.price) {
+                    price += pizza.price;
+                }
             }
         } else {
             const product = productsVariations.find((item) => {
@@ -38,6 +42,9 @@ export const useProductInfo = (id: string, size?: string, dough?: string): Image
             if (product) {
                 imageName = product.img;
                 description.push('1 шт', product.weight)
+                if (product.price) {
+                    price += product.price;
+                }
             }
         }
         
@@ -46,7 +53,8 @@ export const useProductInfo = (id: string, size?: string, dough?: string): Image
 
         return {
             src,
-            description
+            description,
+            price
         }
     }, [id, size, dough])
 }

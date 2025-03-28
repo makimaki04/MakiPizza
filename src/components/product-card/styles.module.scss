@@ -40,6 +40,8 @@
             position: absolute;
             top: 66px;
             left: 27px;
+            opacity: 0;
+            transition: 200ms;
         }
 
         .small__сircle {
@@ -50,6 +52,13 @@
             position: absolute;
             top: 104px;
             left: 65px;
+            opacity: 0;
+            transition: 200ms;
+        }
+
+        .active {
+            transition: 300ms;
+            opacity: 1;
         }
     }
 

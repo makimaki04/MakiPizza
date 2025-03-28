@@ -8,7 +8,6 @@ import { useProductInfo } from "../../hooks/useProductInfo";
 
     export interface ProductCardProps {
         title: string;
-        price: number;
         id: string;
         category: string;
         onAdd: () => void;
@@ -26,7 +25,7 @@ import { useProductInfo } from "../../hooks/useProductInfo";
         1: "thin",
     }
 
-    export function ProductCard({ id, title, price, onAdd, onClose, category }: ProductCardProps) {
+    export function ProductCard({ id, title, onAdd, onClose, category }: ProductCardProps) {
         const [ size, setSize ] = useState<{index: number, size: string}>({index: 1, size: 'middle'});
         const [ dough, setDough ] = useState<{index: number, type: string}>({index: 0, type: 'traditional'});
 
@@ -59,6 +58,13 @@ import { useProductInfo } from "../../hooks/useProductInfo";
             }
         }, []);
 
+        let src, description, price;
+        if (category === 'pizza') {
+            ({ src, description, price } = useProductInfo(id, size.size, dough.type));
+        } else {
+            ({ src, description, price } = useProductInfo(id));
+        }
+
         const sizeGliderPosition = `${139 * size.index}px`;
         const doughGliderPosition = `${208 * dough.index}px`;
 
@@ -67,13 +73,6 @@ import { useProductInfo } from "../../hooks/useProductInfo";
         const isSmall = size.size === pizzaSizeMap[0];
         const isMiddle = size.size === pizzaSizeMap[1];
         const isLarge = size.size === pizzaSizeMap[2];
-        
-        let src, description;
-        if (category === 'pizza') {
-            ({ src, description } = useProductInfo(id, size.size, dough.type));
-        } else {
-            ({ src, description } = useProductInfo(id));
-        }
 
         return (
             <Container className={styles.card__contaier}>
@@ -85,12 +84,8 @@ import { useProductInfo } from "../../hooks/useProductInfo";
                             alt={title} 
                             className={clsx(styles.image, isSmall && styles.image__small, isMiddle && styles.image__middle, isLarge && styles.image__large)} 
                             />
-                            {!isMiddle && !isLarge && 
-                                <span className={styles.small__сircle} />
-                            }
-                            {!isLarge &&
-                                <span className={styles.big__сircle} />
-                            }
+                            <span className={clsx(styles.small__сircle, (!isMiddle && !isLarge) && styles.active)} />
+                            <span className={clsx(styles.big__сircle, !isLarge && styles.active)} />
                         </>
                     ) : (
                         <img 

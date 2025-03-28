@@ -1,3 +1,5 @@
+import { ProductInfo } from "../types/types";
+
 export const categories = [
   "Пиццы",
   "Комбо",
@@ -67,7 +69,7 @@ export const pizza = [
         title: 'Баварская', 
         description: 'Баварские колбаски, маринованные огурчики, красный лук, томаты, горчичный соус, моцарелла, фирменный томатный соус', 
         src: 'https://media.dodostatic.net/image/r:584x584/019591a2e222794a81731c99f3cc34ec.avif', 
-        price: 250,
+        price: 539,
         category: 'pizza'
     }, 
 
@@ -77,7 +79,7 @@ export const pizza = [
         description: 'Пряная говядина, шампиньоны, ароматный грибной соус, маринованные огурчики, моцарелла, красный лук, фирменный соус альфредо', 
         src: 'https://media.dodostatic.net/image/r:584x584/01953ced168c758399984df8561623a3.avif', 
         
-        price: 300,
+        price: 549,
         category: 'pizza'
     },
     {
@@ -85,7 +87,7 @@ export const pizza = [
         title: 'Овощи и грибы', 
         description: 'Шампиньоны, томаты, сладкий перец, красный лук, кубики брынзы, моцарелла, фирменный томатный соус, итальянские травы', 
         src: 'https://media.dodostatic.net/image/r:584x584/11ee7d61546d8483a61a0bbaa7adcc78.avif', 
-        price: 800,
+        price: 579,
         category: 'pizza'
     },
     {
@@ -93,7 +95,7 @@ export const pizza = [
         title: 'Чилл Грилл ', 
         description: 'Цыпленок, маринованные огурчики, красный лук, соус гриль, моцарелла, чеснок, фирменный соус альфредо', 
         src: 'https://media.dodostatic.net/image/r:584x584/019591c69fac7921a27e4ecd8c99f9df.avif', 
-        price: 500,
+        price: 519,
         category: 'pizza'
     },
     {
@@ -101,7 +103,7 @@ export const pizza = [
         title: 'Пепперони фреш ', 
         description: 'Пикантная пепперони, увеличенная порция моцареллы, томаты, фирменный томатный соус', 
         src: 'https://media.dodostatic.net/image/r:584x584/11ee7d612fc7b7fca5be822752bee1e5.avif', 
-        price: 745,
+        price: 329,
         category: 'pizza'
     },
     {
@@ -109,7 +111,7 @@ export const pizza = [
         title: 'Ветчина и грибы ', 
         description: 'Ветчина, шампиньоны, увеличенная порция моцареллы, фирменный томатный соус', 
         src: 'https://media.dodostatic.net/image/r:584x584/11ef5b10b39bbbbda9f8c4e4ff1b067c.avif', 
-        price: 450,
+        price: 529,
         category: 'pizza'
     }];
 
@@ -124,228 +126,253 @@ export const otherProducts = [
     }
 ]
 
-export type product = {
-    productId: string,
-    doughType?: string,
-    size?: string,
-    weight: string,
-    img: string,
-}
 
-export const productsVariations: product[] = [
+
+export const productsVariations: ProductInfo[] = [
     {
         productId: '1',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
-        img: '019591a2daa67853a5f9e00acb20f6b4.avif'
+        img: '019591a2daa67853a5f9e00acb20f6b4.avif',
+        price: 539,
     },
     {
         productId: '1',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
-        img: '019591a2e222794a81731c99f3cc34ec.avif'
+        img: '019591a2e222794a81731c99f3cc34ec.avif',
+        price: 799,
     },
     {
         productId: '1',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
-        img: '019591a2f375703390252bbac9bf1cc6.avif'
+        img: '019591a2f375703390252bbac9bf1cc6.avif',
+        price: 969,
     },
     {
         productId: '1',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
-        img: '019591a2ea88709aad819409efa194d4.avif'
+        img: '019591a2ea88709aad819409efa194d4.avif',
+        price: 799,
     },
     {
         productId: '1',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
-        img: '019591a2fa8370419c7a7f799c268615.avif'
+        img: '019591a2fa8370419c7a7f799c268615.avif',
+        price: 969,
     },
     {
         productId: '2',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
-        img: '01953cebc82b777c96bfd4dd1a377eb0.avif'
+        img: '01953cebc82b777c96bfd4dd1a377eb0.avif',
+        price: 549,
     },
     {
         productId: '2',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
-        img: '01953ced168c758399984df8561623a3.avif'
+        img: '01953ced168c758399984df8561623a3.avif',
+        price: 839,
     },
     {
         productId: '2',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
-        img: '01953cece9107770849481f54187a17f.avif'
+        img: '01953cece9107770849481f54187a17f.avif',
+        price: 979,
     },
     {
         productId: '2',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
-        img: '01953ced22e872f0acf1d1b2034330fd.avif'
+        img: '01953ced22e872f0acf1d1b2034330fd.avif',
+        price: 839,
     },
     {
         productId: '2',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
-        img: '01953ced410e710d9d49552f6e2b9b9b.avif'
+        img: '01953ced410e710d9d49552f6e2b9b9b.avif',
+        price: 879,
     },
     {
         productId: '3',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
-        img: '11ee7d61543cb077931c15b0e271347f.avif'
+        img: '11ee7d61543cb077931c15b0e271347f.avif',
+        price: 579,
     },
     {
         productId: '3',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
-        img: '11ee7d61546d8483a61a0bbaa7adcc78.avif'
+        img: '11ee7d61546d8483a61a0bbaa7adcc78.avif',
+        price: 849,
     },
     {
         productId: '3',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
-        img: '11ee7d6154c786f2940500127aa6d33e.avif'
+        img: '11ee7d6154c786f2940500127aa6d33e.avif',
+        price: 999,
     },
     {
         productId: '3',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
-        img: '11ee7d6154983942b98a2318a1455f88.avif'
+        img: '11ee7d6154983942b98a2318a1455f88.avif',
+        price: 849,
     },
     {
         productId: '3',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
-        img: '11ee7d6154ed7cedada4f410c8947498.avif'
+        img: '11ee7d6154ed7cedada4f410c8947498.avif',
+        price: 999,
     },
     {
         productId: '4',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
-        img: '019591c6990b7898b2da3a4645998358.avif'
+        img: '019591c6990b7898b2da3a4645998358.avif',
+        price: 519,
     },
     {
         productId: '4',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
-        img: '019591c69fac7921a27e4ecd8c99f9df.avif'
+        img: '019591c69fac7921a27e4ecd8c99f9df.avif',
+        price: 749,
     },
     {
         productId: '4',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
-        img: '019591c6ae147092bab65405e08e005b.avif'
+        img: '019591c6ae147092bab65405e08e005b.avif',
+        price: 939,
     },
     {
         productId: '4',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
-        img: '019591c6a7c97581b792c83177e69365.avif'
+        img: '019591c6a7c97581b792c83177e69365.avif',
+        price: 749,
     },
     {
         productId: '4',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
-        img: '019591c6b5dd71dc80b0d5e7b3e3ddd4.avif'
+        img: '019591c6b5dd71dc80b0d5e7b3e3ddd4.avif',
+        price: 939,
     },
     {
         productId: '5',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
-        img: '11ee7d612f98bc0ea828957caff9c8ec.avif'
+        img: '11ee7d612f98bc0ea828957caff9c8ec.avif',
+        price: 329,
     },
     {
         productId: '5',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
-        img: '11ee7d612fc7b7fca5be822752bee1e5.avif'
+        img: '11ee7d612fc7b7fca5be822752bee1e5.avif',
+        price: 559,
     },
     {
         productId: '5',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
-        img: '11ee7d6130241e75b0ab33725248c0d0.avif'
+        img: '11ee7d6130241e75b0ab33725248c0d0.avif',
+        price: 679,
     },
     {
         productId: '5',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
-        img: '11ee7d612ff49f2c98064fb647c3aa86.avif'
+        img: '11ee7d612ff49f2c98064fb647c3aa86.avif',
+        price: 559,
     },
     {
         productId: '5',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
-        img: '11ee7d61304faf5a98a6958f2bb2d260.avif'
+        img: '11ee7d61304faf5a98a6958f2bb2d260.avif',
+        price: 679,
     },
     {
         productId: '6',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
-        img: '11ee7d611f62c45b81e28c4c8b57a356.avif'
+        img: '11ee7d611f62c45b81e28c4c8b57a356.avif',
+        price: 529,
     },
     {
         productId: '6',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
-        img: '11ef5b10b39bbbbda9f8c4e4ff1b067c.avif'
+        img: '11ef5b10b39bbbbda9f8c4e4ff1b067c.avif',
+        price: 769,
     },
     {
         productId: '6',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
-        img: '11ee7d611ff4e070bc833c66d67f2e44.avif'
+        img: '11ee7d611ff4e070bc833c66d67f2e44.avif',
+        price: 889,
     },
     {
         productId: '6',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
-        img: '11ef5b10b4f3f53a86693b1614a719e7.avif'
+        img: '11ef5b10b4f3f53a86693b1614a719e7.avif',
+        price: 769,
     },
     {
         productId: '6',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
-        img: '11ee7d612021428999227f0b5fbb5b40.avif'
+        img: '11ee7d612021428999227f0b5fbb5b40.avif',
+        price: 889,
     },
     {
         productId: '7',
         weight: '0.3 л',
-        img: '11ee7d61aed6b6d4bfdad4e58d76cf56.avif'
+        img: '11ee7d61aed6b6d4bfdad4e58d76cf56.avif',
+        price: 169,
     }
 ]

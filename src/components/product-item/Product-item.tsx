@@ -85,7 +85,7 @@ export function ProductItem({ title, src, description, price, id, category }: Pr
             </Container>
             
             <div className={clsx(styles.overlay, {[styles.open]: isOpen})} onClick={onOverlayClick}>
-                <ProductCard onAdd={handleAddToCart} id={id} title={title} price={price} onClose={onClose} category={category} />
+                <ProductCard onAdd={handleAddToCart} id={id} title={title} onClose={onClose} category={category} />
             </div>
         </Container>
     )
