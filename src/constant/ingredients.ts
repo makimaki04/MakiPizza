@@ -1,4 +1,4 @@
-import { ProductInfo } from "../types/types";
+import { Product, ProductInfo } from "../types/types";
 
 export const categories = [
   "Пиццы",
@@ -36,7 +36,7 @@ export const pizzaSize = [
     },
   ];
 
-export const ingredients = [
+export const ingredientsFilter = [
     {
         label: 'Сырный соус',
         value: "Sauce",
@@ -63,7 +63,42 @@ export const ingredients = [
     }, 
 ]
 
-export const pizza = [
+export const ingredients = [
+    {
+        title: 'Пряная говядина',
+        price: 159,
+        src: 'https://cdn.dodostatic.net/static/Img/Ingredients/11ef5ed5f8f64595a6d6a99c1fe6f7f0.png'
+    },
+    {
+        title: 'Моцарелла',
+        price: 99,
+        src: 'https://cdn.dodostatic.net/static/Img/Ingredients/cdea869ef287426386ed634e6099a5ba.png'
+    },
+    {
+        title: 'Сыр чеддер и пармезан',
+        price: 99,
+        src: '	https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA69C1FE796'
+    },
+    {
+        title: 'Острый перец халапеньо',
+        price: 79,
+        src: 'https://cdn.dodostatic.net/static/Img/Ingredients/11ee95b6bfdf98fb88a113db92d7b3df.png'
+    },
+    {
+        title: 'нежный цыпленок',
+        price: 99,
+        src: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA5B328D35A'
+    },
+    {
+        title: 'Шампиньоны',
+        price: 79,
+        src: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA67259A324'
+    },
+]
+
+
+
+export const pizza: Product[] = [
     {   
         id: '1',
         title: 'Баварская', 
@@ -125,8 +160,6 @@ export const otherProducts = [
         category: 'coffee'
     }
 ]
-
-
 
 export const productsVariations: ProductInfo[] = [
     {

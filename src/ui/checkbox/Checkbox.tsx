@@ -10,7 +10,7 @@ export interface CheckboxProps {
   checked?: boolean;
 }
 
-export function Checkbox({ label, value, onChange, checked }: CheckboxProps) {
+export const Checkbox = ({ label, value, onChange, checked }: CheckboxProps) => {
   return (
     <Container className={styles.checkbox__container}>
       <input

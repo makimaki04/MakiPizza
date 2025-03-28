@@ -42,6 +42,14 @@ export function ProductItem({ title, src, description, price, id, category }: Pr
         }
     }
 
+    if (isOpen) {
+        document.body.style.overflow = 'hidden';
+        document.body.style.paddingRight = '15px';
+    } else {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+    }
+
     return (
         <Container className={styles.card__container} >
             <Container className={styles.card__image_wrapper} onClick={onOpen}>

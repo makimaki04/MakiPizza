@@ -3,7 +3,7 @@ import { Button, Container } from "../../ui";
 import styles from "./styles.module.scss";
 import { CheckBoxGroup } from "../index";
 import { RussianRuble } from "lucide-react";
-import { doughType, ingredients, pizzaSize } from "../../constant/ingredients";
+import { doughType, ingredientsFilter, pizzaSize } from "../../constant/ingredients";
 
 export function Filters() {
   return (
@@ -34,7 +34,7 @@ export function Filters() {
           </div>
         </Container>
 
-        <CheckBoxGroup title="Ингредиенты" items={ingredients} />
+        <CheckBoxGroup title="Ингредиенты" items={ingredientsFilter} />
 
         <Button type="submit">Применить</Button>
       </Container>

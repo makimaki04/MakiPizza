@@ -18,7 +18,7 @@ export function Categories({ categories }: CategoriesProps) {
     <>
       <Container className={styles.container}>
         {categories.map((category, index) => (
-            <Button type="button" onClick={() => onClick(index)} className={clsx(styles.category, activeIndex === index && styles.category__active)}>{category}</Button>
+            <Button key={index} type="button" onClick={() => onClick(index)} className={clsx(styles.category, activeIndex === index && styles.category__active)}>{category}</Button>
         ))}
       </Container>
     </>

@@ -6,6 +6,6 @@ interface LogoProps {
     alt: string
 }
 
-export function Logo({ src, alt }: LogoProps): ReactNode {
+export const Logo = ({ src, alt }: LogoProps): ReactNode => {
     return <img className={styles.logo} src={src} alt={alt} />
 }

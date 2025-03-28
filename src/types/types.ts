@@ -9,7 +9,6 @@ export type Product = {
     category: string
 }
 
-
 export type BaseProductInfo = {
     productId: string,
     weight: string,
@@ -28,5 +27,11 @@ export type RegularProductInfo = BaseProductInfo & {
 };
 
 export type ProductInfo = PizzaInfo | RegularProductInfo;
+
+export type Ingredient = {
+    title: string;
+    price: number;
+    src: string;
+}
 
 export type SortType = keyof typeof SORT_OPTIONS;

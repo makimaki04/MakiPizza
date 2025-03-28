@@ -9,6 +9,6 @@ interface ButtonProps {
   className?: string;
 }
 
-export function Button({ children, type, onClick,className = styles.button }: ButtonProps) {
+export const Button = ({ children, type, onClick,className = styles.button }: ButtonProps) => {
   return <button type={type} onClick={onClick} className={clsx('text text_size_middle', className)}>{children}</button>;
 }

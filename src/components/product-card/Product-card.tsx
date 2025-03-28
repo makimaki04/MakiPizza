@@ -1,10 +1,11 @@
-    import { useCallback, useEffect, useState } from "react";
+    import { useCallback, useEffect, useMemo, useState } from "react";
     import { Button, Container } from "../../ui";
     import styles from "./styles.module.scss"
     import clsx from "clsx";
-    import { doughType, pizzaSize } from "../../constant/ingredients";
+    import { doughType, ingredients, pizzaSize } from "../../constant/ingredients";
 import { X } from "lucide-react";
 import { useProductInfo } from "../../hooks/useProductInfo";
+import { Ingredient } from "../ingredient/Ingredient";
 
     export interface ProductCardProps {
         title: string;
@@ -28,6 +29,8 @@ import { useProductInfo } from "../../hooks/useProductInfo";
     export function ProductCard({ id, title, onAdd, onClose, category }: ProductCardProps) {
         const [ size, setSize ] = useState<{index: number, size: string}>({index: 1, size: 'middle'});
         const [ dough, setDough ] = useState<{index: number, type: string}>({index: 0, type: 'traditional'});
+        const [basePrice, setBasePrice] = useState<number>(0);
+        const [additionalPrice, setAdditionalPrice] = useState<number>(0);
 
         const isThinDisabled = size.size === 'small';
 
@@ -58,12 +61,34 @@ import { useProductInfo } from "../../hooks/useProductInfo";
             }
         }, []);
 
-        let src, description, price;
+        let src: string;
+        let description: string[];
+        let price: number;
+
         if (category === 'pizza') {
             ({ src, description, price } = useProductInfo(id, size.size, dough.type));
         } else {
             ({ src, description, price } = useProductInfo(id));
         }
+
+        useEffect(() => {
+            setBasePrice(price);
+        }, [price]);
+
+
+        const addIngredient = (e: React.ChangeEvent<HTMLInputElement>) => {
+            const cost = Number(e.target.value);
+            setAdditionalPrice(prev => 
+                e.target.checked ? prev + cost : prev - cost
+            );
+        }
+
+        const handleAddToCart = ()  => {
+            
+            onAdd();
+        }
+
+        const totalPrice = useMemo(() => basePrice + additionalPrice, [basePrice, additionalPrice]);
 
         const sizeGliderPosition = `${139 * size.index}px`;
         const doughGliderPosition = `${208 * dough.index}px`;
@@ -97,7 +122,7 @@ import { useProductInfo } from "../../hooks/useProductInfo";
                     }
                 </Container>
 
-                <Container className={styles.ingredients__container}>
+                <Container className={styles.description__container}>
                     <Container className={styles.title__container}>
                         <h3 className={clsx('text_size_medium m-0 text')}>{title}</h3>
                         <p className={clsx('text_size_small m-0 text', styles.description)}>{description.join(', ')}</p>
@@ -123,7 +148,8 @@ import { useProductInfo } from "../../hooks/useProductInfo";
                                                 >
                                                     <input type='radio'
                                                     id={`size-${index}`}
-                                                    checked={size.index === index}
+                                                    name='pizza-size'
+                                                    defaultChecked={size.index === index}
                                                     />
                                                     {item.label}
                                                 </label>
@@ -150,8 +176,9 @@ import { useProductInfo } from "../../hooks/useProductInfo";
                                                 onClick={() => handleDoughChange(index)}
                                                 >
                                                     <input type='radio'
-                                                    checked={dough.index === index}
+                                                    defaultChecked={dough.index === index}
                                                     id={`dough-${index}`}
+                                                    name="pizza-dough"
                                                     disabled={isThinDisabled && doughTypeMap[index] === 'thin'}
                                                     />
                                                     {item.label}
@@ -163,12 +190,19 @@ import { useProductInfo } from "../../hooks/useProductInfo";
                                 </Container>
                             </Container>
                             
-                            <p className={clsx('text_size_medium text m-0 bold')}>Добавить по вкусу</p>
+                            <Container className={styles.add__ingredietns_container}>
+                                <p className={clsx('text_size_medium text m-0 bold')}>Добавить по вкусу</p>
+                                <Container className={styles.ingredients__container}>
+                                    {ingredients.map((item, index) => (
+                                        <Ingredient title={item.title} price={item.price} src={item.src} onClick={addIngredient} key={index} />
+                                    ))}
+                                </Container>
+                            </Container>
                         </>
                     )}
     
-                    <Button type="button" onClick={onAdd} className={styles.add__bttuon}>
-                        Добавить в корзину за {price} ₽
+                    <Button type="button" onClick={handleAddToCart} className={styles.add__bttuon}>
+                        Добавить в корзину за {totalPrice} ₽
                     </Button>
                     
                 </Container>

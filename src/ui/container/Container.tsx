@@ -7,6 +7,6 @@ interface ContainerProps {
     onClick?: () => void;
 }
 
-export function Container ({ children, className, onClick }: ContainerProps) {
+export const Container = ({ children, className, onClick }: ContainerProps) => {
     return <div className={clsx(className)} onClick={onClick}>{children}</div>
 }

@@ -22,14 +22,14 @@ export function SortPopup({ onChange }: SortPopupProps) {
         <Container className={styles.container}>
             <ArrowUpDown className={styles.icon} size={16} />
             <p className={clsx('text', 'm-0', 'text_size_middle')}>Сортировка:</p>
-            <Button type='button' className={styles.button}>
+            <Button type="button" className={styles.button}>
                 {SORT_OPTIONS[currentSort]}
-                 <span className={styles.popup}>
+                <span className={styles.popup}>
                     {Object.entries(SORT_OPTIONS).map(([key, label]) => (
-                        <Button key={key} type='button' onClick={() => {handleSortChange(key as SortType)}} className={styles.category__button}>{label}</Button>
+                        <div key={key} role='button' onClick={() => {handleSortChange(key as SortType)}} className={styles.category__button}>{label}</div>
                     ))}
-                 </span>
-                 </Button>
+                </span>
+            </Button>
         </Container>
     </>
 }

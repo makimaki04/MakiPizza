@@ -21,8 +21,8 @@ export function ProductList({ products, sortBy }: ProductListProps) {
 
     return (
         <Container className={styles.container}>
-            {sortedProducts.map((item) => (
-                <ProductItem id={item.id} title={item.title} price={item.price} description={item.description} src={item.src} category={item.category}/>
+            {sortedProducts.map((item, index) => (
+                <ProductItem id={item.id} title={item.title} price={item.price} description={item.description} src={item.src} category={item.category} key={index} />
             ))}
         </Container>
     )
