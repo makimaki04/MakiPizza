@@ -1,11 +1,11 @@
-    import { useCallback, useEffect, useMemo, useState } from "react";
+    import { useCallback, useEffect, useMemo, useRef, useState } from "react";
     import { Button, Container } from "../../ui";
     import styles from "./styles.module.scss"
     import clsx from "clsx";
     import { doughType, ingredients, pizzaSize } from "../../constant/ingredients";
-import { X } from "lucide-react";
-import { useProductInfo } from "../../hooks/useProductInfo";
-import { Ingredient } from "../ingredient/Ingredient";
+    import { X } from "lucide-react";
+    import { useProductInfo } from "../../hooks/useProductInfo";
+    import { Ingredient } from "../ingredient/Ingredient";
 
     export interface ProductCardProps {
         title: string;
@@ -31,6 +31,7 @@ import { Ingredient } from "../ingredient/Ingredient";
         const [ dough, setDough ] = useState<{index: number, type: string}>({index: 0, type: 'traditional'});
         const [basePrice, setBasePrice] = useState<number>(0);
         const [additionalPrice, setAdditionalPrice] = useState<number>(0);
+        const [selectedIngredients, setSelectedIngredients] = useState<{[id: string]: boolean}>({});
 
         const isThinDisabled = size.size === 'small';
 
@@ -58,6 +59,7 @@ import { Ingredient } from "../ingredient/Ingredient";
 
             return () => {
                 document.removeEventListener('keydown', handleEscape);
+                clearTimeout(timerRef.current);
             }
         }, []);
 
@@ -76,16 +78,28 @@ import { Ingredient } from "../ingredient/Ingredient";
         }, [price]);
 
 
-        const addIngredient = (e: React.ChangeEvent<HTMLInputElement>) => {
-            const cost = Number(e.target.value);
+        const addIngredient = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+            const { id, value, checked } = e.target;
+            setSelectedIngredients(prev => ({
+                ...prev,
+                [id]: checked
+            }));
             setAdditionalPrice(prev => 
-                e.target.checked ? prev + cost : prev - cost
+                checked ? prev + Number(value) : prev - Number(value)
             );
-        }
+        }, [])
+
+        const timerRef = useRef<any>();
 
         const handleAddToCart = ()  => {
-            
             onAdd();
+
+            timerRef.current = setTimeout(() => {
+                setAdditionalPrice(0)
+                setSelectedIngredients({});
+                setSize({index: 1, size: 'middle'});
+                setDough({index: 0, type: 'traditional'});
+            }, 300)
         }
 
         const totalPrice = useMemo(() => basePrice + additionalPrice, [basePrice, additionalPrice]);
@@ -194,16 +208,25 @@ import { Ingredient } from "../ingredient/Ingredient";
                                 <p className={clsx('text_size_medium text m-0 bold')}>Добавить по вкусу</p>
                                 <Container className={styles.ingredients__container}>
                                     {ingredients.map((item, index) => (
-                                        <Ingredient title={item.title} price={item.price} src={item.src} onClick={addIngredient} key={index} />
+                                        <Ingredient 
+                                        id={item.id}
+                                        title={item.title} 
+                                        price={item.price} 
+                                        src={item.src} 
+                                        onClick={addIngredient} 
+                                        isChecked={!!selectedIngredients[item.id]} 
+                                        key={index} 
+                                        />
                                     ))}
                                 </Container>
                             </Container>
                         </>
                     )}
-    
+                    
                     <Button type="button" onClick={handleAddToCart} className={styles.add__bttuon}>
                         Добавить в корзину за {totalPrice} ₽
                     </Button>
+
                     
                 </Container>
                 <button className={styles.close__button} onClick={onClose}>

@@ -48,7 +48,6 @@ export const useProductInfo = (id: string, size?: string, dough?: string): Image
             }
         }
         
-
         const src = `${baseUrl}/r:760x760/${imageName}`;
 
         return {

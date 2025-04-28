@@ -65,38 +65,60 @@ export const ingredientsFilter = [
 
 export const ingredients = [
     {
+        id: 'spicy beef',
         title: 'Пряная говядина',
         price: 159,
         src: 'https://cdn.dodostatic.net/static/Img/Ingredients/11ef5ed5f8f64595a6d6a99c1fe6f7f0.png'
     },
     {
+        id: 'mozarella',
         title: 'Моцарелла',
         price: 99,
         src: 'https://cdn.dodostatic.net/static/Img/Ingredients/cdea869ef287426386ed634e6099a5ba.png'
     },
     {
+        id: 'cheddar cheese',
         title: 'Сыр чеддер и пармезан',
         price: 99,
         src: '	https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA69C1FE796'
     },
     {
+        id: 'jalapeno',
         title: 'Острый перец халапеньо',
         price: 79,
         src: 'https://cdn.dodostatic.net/static/Img/Ingredients/11ee95b6bfdf98fb88a113db92d7b3df.png'
     },
     {
+        id: 'chicken',
         title: 'нежный цыпленок',
         price: 99,
         src: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA5B328D35A'
     },
     {
+        id: 'champignons',
         title: 'Шампиньоны',
         price: 79,
         src: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA67259A324'
     },
+    {
+        id: 'bacon',
+        title: 'Бекон',
+        price: 99,
+        src: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA637AAB68F'
+    },
+    {
+        id: 'ham',
+        title: 'Ветчина',
+        price: 99,
+        src: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA61B9A8D61'
+    },
+    {
+        id: 'italian herbs',
+        title: 'Итальянские травы',
+        price: 39,
+        src: 'https://cdn.dodostatic.net/static/Img/Ingredients/370dac9ed21e4bffaf9bc2618d258734.png'
+    }
 ]
-
-
 
 export const pizza: Product[] = [
     {   
