@@ -5,7 +5,7 @@ import { CheckBoxGroup } from "../index";
 import { RussianRuble } from "lucide-react";
 import { doughType, ingredientsFilter, pizzaSize } from "../../constant/ingredients";
 
-export function Filters() {
+export const Filters = () => {
   return (
     <div className={styles.filters__block}>
       <h3 className={clsx("text_size_medium text m-0")}>Фильтрация</h3>

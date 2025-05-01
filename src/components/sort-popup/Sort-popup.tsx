@@ -10,7 +10,7 @@ interface SortPopupProps {
     onChange: (sortType: SortType) => void;
 }
 
-export function SortPopup({ onChange }: SortPopupProps) {
+export const SortPopup = ({ onChange }: SortPopupProps) => {
     const [currentSort, setCurrentSort] = useState<SortType>('rating');
 
     const handleSortChange = (sortKey: SortType) => {

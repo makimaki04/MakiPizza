@@ -8,7 +8,7 @@ interface TopBarProps {
   onSortChange: (sortOption: SortType) => void;
 }
 
-export function TopBar({ onSortChange }: TopBarProps) {
+export const TopBar = ({ onSortChange }: TopBarProps) => {
   return (
     <div className={styles.topBar}>
       <Container className={styles.container}>

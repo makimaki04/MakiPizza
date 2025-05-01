@@ -6,7 +6,7 @@ import { pizza } from "../../constant/ingredients";
 import { useState } from "react";
 import { SortType } from "../../types/types";
 
-export function Home() {
+export const Home = () => {
     const [sortOption, setSortOption] = useState<SortType>('rating');
 
     return <>

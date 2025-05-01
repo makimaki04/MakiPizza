@@ -2,10 +2,30 @@ import { ArrowRight, ShoppingCart, User } from "lucide-react";
 import { Button, Container, Logo, Search } from "../../ui";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
+import { Basket } from "../index"
+import { useState } from "react";
 
-export function AppHeader() {
-  const price = "1500";
+export const AppHeader = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const price = 0;
   const count = 3;
+
+  const onOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+        onClose();
+    }
+  }
+
+
+  const onClose = () => {
+    setIsOpen(false);
+  }
+
+  const onOpen = () => {
+    setIsOpen(true);
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -38,18 +58,26 @@ export function AppHeader() {
             </Button>
 
             <Container className={styles.basket__button_container}>
-              <Button type="button" className={styles.button}>
-                {price + " ₽"}
-                <span className={styles.separator} />
-                <Container className={styles.basket__Container}>
-                  <ShoppingCart size={16} />
-                  {count}
-                </Container>
-                <ArrowRight size={20} className={styles.basket__arrow} />
+              <Button type="button" className={styles.button} onClick={onOpen} >
+              {!price ? 'Корзина' : (
+                <>
+                  {`${price} ₽`}
+                  <span className={styles.separator} />
+                  <Container className={styles.basket__Container}>
+                    <ShoppingCart size={16} />
+                    {count}
+                  </Container>
+                  <ArrowRight size={20} className={styles.basket__arrow} />
+                </>
+              )}
               </Button>
             </Container>
           </Container>
         </Container>
+      
+        <div className={clsx(styles.overlay, {[styles.open]: isOpen})} onClick={onOverlayClick}>
+          <Basket onClose={onClose} isOpen={isOpen} />
+        </div>
       </header>
     </>
   );

@@ -14,13 +14,13 @@ export interface ProductCardProps {
     category: string;
 }
 
-export function ProductItem({ title, src, description, price, id, category }: ProductCardProps) {
-    const [ count, setCount ] = useState(0);
-    const [ isOpen, setIsOpen ] = useState(false);
+export const ProductItem = ({ title, src, description, price, id, category }: ProductCardProps) => {
+    const [ count, setCount ] = useState<number>(0);
+    const [ isOpen, setIsOpen ] = useState<boolean>(false);
 
     const handleAddToCart = () => {
         setCount(count + 1);
-        setIsOpen(false);
+        onClose()
     }
     
     const handleRemoveClick = (e: React.MouseEvent) => {
@@ -70,7 +70,7 @@ export function ProductItem({ title, src, description, price, id, category }: Pr
                 {count === 0 ? (
                     <Button type='button' 
                         className={styles.card__button} 
-                        onClick={() => setIsOpen(true)}
+                        onClick={onOpen}
                     >
                         + Добавить
                     </Button>

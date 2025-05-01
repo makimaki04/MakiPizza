@@ -11,7 +11,7 @@ interface IngredientProps {
     onClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export function Ingredient({ id, title, price, src, onClick, isChecked }: IngredientProps) {
+export const Ingredient = ({ id, title, price, src, onClick, isChecked }: IngredientProps) => {
     const handleClick = () => {
         const mockEvent = {
             target: {

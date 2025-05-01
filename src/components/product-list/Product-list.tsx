@@ -10,7 +10,7 @@ export interface ProductListProps {
 }
 
 
-export function ProductList({ products, sortBy }: ProductListProps) {
+export const ProductList = ({ products, sortBy }: ProductListProps) => {
     const sortedProducts = useMemo(() => {
         if (sortBy === 'price') {
             return [...products].sort((a,b) => a.price- b.price);

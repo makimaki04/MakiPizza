@@ -7,7 +7,7 @@ export interface CategoriesProps {
   categories: string[];
 }
 
-export function Categories({ categories }: CategoriesProps) {
+export const Categories = ({ categories }: CategoriesProps) => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
     
     const onClick = (index: number) => {

@@ -26,7 +26,7 @@
         1: "thin",
     }
 
-    export function ProductCard({ id, title, onAdd, onClose, category }: ProductCardProps) {
+    export const ProductCard = ({ id, title, onAdd, onClose, category }: ProductCardProps) => {
         const [ size, setSize ] = useState<{index: number, size: string}>({index: 1, size: 'middle'});
         const [ dough, setDough ] = useState<{index: number, type: string}>({index: 0, type: 'traditional'});
         const [basePrice, setBasePrice] = useState<number>(0);
