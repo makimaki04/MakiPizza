@@ -34,4 +34,12 @@ export type Ingredient = {
     src: string;
 }
 
+export type basketItem = {
+    title: string;
+    description: string;
+    price: number;
+    image: string;
+    count: number;
+}
+
 export type SortType = keyof typeof SORT_OPTIONS;
