@@ -6,12 +6,12 @@
     import { X } from "lucide-react";
     import { useProductInfo } from "../../hooks/useProductInfo";
     import { Ingredient } from "../ingredient/Ingredient";
+    import { BasketItemType, IngredientType, Product } from "../../types/types";
+import { nanoid } from "@reduxjs/toolkit";
 
     export interface ProductCardProps {
-        title: string;
-        id: string;
-        category: string;
-        onAdd: () => void;
+        product: Product;
+        onAdd: (basketItem: BasketItemType) => void;
         onClose: () => void
     }
 
@@ -26,12 +26,27 @@
         1: "thin",
     }
 
-    export const ProductCard = ({ id, title, onAdd, onClose, category }: ProductCardProps) => {
+    export type ingredientSelection = {
+        id: string;
+        title: string;
+        price: number;
+        isSelected: boolean;
+    }
+
+    export const ProductCard = ({ product, onAdd, onClose, }: ProductCardProps) => {
+        const { id, title, category} = product;
+
         const [ size, setSize ] = useState<{index: number, size: string}>({index: 1, size: 'middle'});
         const [ dough, setDough ] = useState<{index: number, type: string}>({index: 0, type: 'traditional'});
         const [basePrice, setBasePrice] = useState<number>(0);
-        const [additionalPrice, setAdditionalPrice] = useState<number>(0);
-        const [selectedIngredients, setSelectedIngredients] = useState<{[id: string]: boolean}>({});
+        const [selectedIngredients, setSelectedIngredients] = useState<ingredientSelection[]>(
+            ingredients.map(ing => ({
+                id: ing.id,
+                title: ing.title,
+                price: ing.price,
+                isSelected: false
+            }))
+        );
 
         const isThinDisabled = size.size === 'small';
 
@@ -60,6 +75,7 @@
             return () => {
                 document.removeEventListener('keydown', handleEscape);
                 clearTimeout(timerRef.current);
+                clearState();
             }
         }, []);
 
@@ -78,31 +94,59 @@
         }, [price]);
 
 
-        const addIngredient = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-            const { id, value, checked } = e.target;
-            setSelectedIngredients(prev => ({
-                ...prev,
-                [id]: checked
-            }));
-            setAdditionalPrice(prev => 
-                checked ? prev + Number(value) : prev - Number(value)
+        const addIngredient = useCallback((ingredientId: string) => {
+            setSelectedIngredients(prev => 
+                prev.map(ing => 
+                    ing.id === ingredientId 
+                    ? {...ing, isSelected: !ing.isSelected}
+                    : ing
+                )
             );
         }, [])
 
         const timerRef = useRef<any>();
 
-        const handleAddToCart = ()  => {
-            onAdd();
+        const handleAddToCart = () => {
+            const ingredientsList: IngredientType[] = selectedIngredients.filter(ing => ing.isSelected)
+                .map(({ id, title, price }) => ({ id, title, price }));
 
+            const baseDescription = description.join(', ');
+            const addedIngredients = ingredientsList.map(ing => ing.title).join(', ');
+
+            const itemDescription = ingredientsList.length > 0
+                ? `${baseDescription} + ${addedIngredients}` 
+                : baseDescription;
+
+            const basketItem: BasketItemType = {
+                id: nanoid(),
+                productId: id,
+                title: title,
+                price: totalPrice,
+                description: itemDescription,
+                ingredients: ingredientsList,
+                image: src,
+                count: 1,
+            }
+
+            onAdd(basketItem);
+            clearState();
+        }
+
+        const clearState = () => {
             timerRef.current = setTimeout(() => {
-                setAdditionalPrice(0)
-                setSelectedIngredients({});
+                setSelectedIngredients(prev => prev.map(ing => ({...ing, isSelected: false})));
                 setSize({index: 1, size: 'middle'});
                 setDough({index: 0, type: 'traditional'});
             }, 300)
         }
 
-        const totalPrice = useMemo(() => basePrice + additionalPrice, [basePrice, additionalPrice]);
+        const totalPrice = useMemo(() => {
+            const ingredientsSum = selectedIngredients
+                .filter(ing => ing.isSelected)
+                .reduce((sum, ing) => sum + ing.price, 0);
+
+                return basePrice + ingredientsSum;
+        }, [basePrice, selectedIngredients]);
 
         const sizeGliderPosition = `${139 * size.index}px`;
         const doughGliderPosition = `${208 * dough.index}px`;
@@ -207,15 +251,15 @@
                             <Container className={styles.add__ingredietns_container}>
                                 <p className={clsx('text_size_medium text m-0 bold')}>Добавить по вкусу</p>
                                 <Container className={styles.ingredients__container}>
-                                    {ingredients.map((item, index) => (
+                                    {ingredients.map((item) => (
                                         <Ingredient 
                                         id={item.id}
                                         title={item.title} 
                                         price={item.price} 
                                         src={item.src} 
                                         onClick={addIngredient} 
-                                        isChecked={!!selectedIngredients[item.id]} 
-                                        key={index} 
+                                        isChecked={selectedIngredients.some(ing => ing.id === item.id && ing.isSelected)} 
+                                        key={item.id} 
                                         />
                                     ))}
                                 </Container>

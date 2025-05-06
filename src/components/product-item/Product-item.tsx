@@ -3,29 +3,18 @@ import { Button, Container } from '../../ui';
 import styles from './styles.module.scss'
 import { useState } from 'react';
 import { ProductCard } from '../index';
-import { Minus, Plus } from 'lucide-react';
+import { BasketItemType, Product } from '../../types/types';
 
 export interface ProductCardProps {
-    id: string;
-    title: string;
-    src: string;
-    description: string;
-    price: number;
-    category: string;
+    product: Product;
 }
 
-export const ProductItem = ({ title, src, description, price, id, category }: ProductCardProps) => {
-    const [ count, setCount ] = useState<number>(0);
+export const ProductItem = ({ product }: ProductCardProps) => {
+    const { title, src, description, price} = product;
     const [ isOpen, setIsOpen ] = useState<boolean>(false);
 
-    const handleAddToCart = () => {
-        setCount(count + 1);
-        onClose()
-    }
-    
-    const handleRemoveClick = (e: React.MouseEvent) => {
-        e.stopPropagation();
-        setCount(count - 1);
+    const handleAddToCart = (basketItem: BasketItemType) => {
+        onClose();
     }
 
     const onClose = () => {
@@ -67,33 +56,22 @@ export const ProductItem = ({ title, src, description, price, id, category }: Pr
                     от <span className={styles.card__price}>{price} ₽</span> 
                 </p>
 
-                {count === 0 ? (
-                    <Button type='button' 
-                        className={styles.card__button} 
-                        onClick={onOpen}
-                    >
-                        + Добавить
-                    </Button>
-                ) : (
-                    <Container className={styles.card__button_block}>
-                        <Button type='button' 
-                            className={styles.count__button} 
-                            onClick={handleRemoveClick}>
-                            <Minus size={17} />
-                        </Button>
-                        <span className={clsx('text m-0 text_size_middle', styles.count)}>{count}</span>
-                        <Button type='button' 
-                            className={styles.count__button} 
-                            onClick={() => setIsOpen(true)}
-                        >
-                            <Plus size={17}/>
-                        </Button>
-                    </Container>
-                )}
+                <Button type='button' 
+                    className={styles.card__button} 
+                    onClick={onOpen}
+                >
+                    + Добавить
+                </Button>
             </Container>
             
             <div className={clsx(styles.overlay, {[styles.open]: isOpen})} onClick={onOverlayClick}>
-                <ProductCard onAdd={handleAddToCart} id={id} title={title} onClose={onClose} category={category} />
+                {isOpen && (
+                        <ProductCard 
+                            onAdd={handleAddToCart} 
+                            product={product} 
+                            onClose={onClose} 
+                        />
+                    )}
             </div>
         </Container>
     )

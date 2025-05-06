@@ -122,7 +122,7 @@ export const ingredients = [
 
 export const pizza: Product[] = [
     {   
-        id: '1',
+        id: '98df7a545716',
         title: 'Баварская', 
         description: 'Баварские колбаски, маринованные огурчики, красный лук, томаты, горчичный соус, моцарелла, фирменный томатный соус', 
         src: 'https://media.dodostatic.net/image/r:584x584/019591a2e222794a81731c99f3cc34ec.avif', 
@@ -131,7 +131,7 @@ export const pizza: Product[] = [
     }, 
 
     {
-        id: '2',
+        id: '6d5bd9568bb3',
         title: 'Бефстроганов ', 
         description: 'Пряная говядина, шампиньоны, ароматный грибной соус, маринованные огурчики, моцарелла, красный лук, фирменный соус альфредо', 
         src: 'https://media.dodostatic.net/image/r:584x584/01953ced168c758399984df8561623a3.avif', 
@@ -140,7 +140,7 @@ export const pizza: Product[] = [
         category: 'pizza'
     },
     {
-        id: '3',
+        id: '60603aa874b7',
         title: 'Овощи и грибы', 
         description: 'Шампиньоны, томаты, сладкий перец, красный лук, кубики брынзы, моцарелла, фирменный томатный соус, итальянские травы', 
         src: 'https://media.dodostatic.net/image/r:584x584/11ee7d61546d8483a61a0bbaa7adcc78.avif', 
@@ -148,7 +148,7 @@ export const pizza: Product[] = [
         category: 'pizza'
     },
     {
-        id: '4',
+        id: '0f325022a161',
         title: 'Чилл Грилл ', 
         description: 'Цыпленок, маринованные огурчики, красный лук, соус гриль, моцарелла, чеснок, фирменный соус альфредо', 
         src: 'https://media.dodostatic.net/image/r:584x584/019591c69fac7921a27e4ecd8c99f9df.avif', 
@@ -156,7 +156,7 @@ export const pizza: Product[] = [
         category: 'pizza'
     },
     {
-        id: '5',
+        id: '4e609b409ae5',
         title: 'Пепперони фреш ', 
         description: 'Пикантная пепперони, увеличенная порция моцареллы, томаты, фирменный томатный соус', 
         src: 'https://media.dodostatic.net/image/r:584x584/11ee7d612fc7b7fca5be822752bee1e5.avif', 
@@ -164,7 +164,7 @@ export const pizza: Product[] = [
         category: 'pizza'
     },
     {
-        id: '6',
+        id: '0a25d67df8cb',
         title: 'Ветчина и грибы ', 
         description: 'Ветчина, шампиньоны, увеличенная порция моцареллы, фирменный томатный соус', 
         src: 'https://media.dodostatic.net/image/r:584x584/11ef5b10b39bbbbda9f8c4e4ff1b067c.avif', 
@@ -174,7 +174,7 @@ export const pizza: Product[] = [
 
 export const otherProducts = [
     {
-        id: '7',
+        id: 'c46b7f35fa2f',
         title: 'Кофе Карамельный капучино', 
         description: 'Классический капучино с молочной пенкой и карамельным сиропом', 
         src: 'https://media.dodostatic.net/image/r:292x292/11ee7d61aed6b6d4bfdad4e58d76cf56.avif', 
@@ -185,7 +185,7 @@ export const otherProducts = [
 
 export const productsVariations: ProductInfo[] = [
     {
-        productId: '1',
+        productId: '98df7a545716',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
@@ -193,7 +193,7 @@ export const productsVariations: ProductInfo[] = [
         price: 539,
     },
     {
-        productId: '1',
+        productId: '98df7a545716',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
@@ -201,7 +201,7 @@ export const productsVariations: ProductInfo[] = [
         price: 799,
     },
     {
-        productId: '1',
+        productId: '98df7a545716',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
@@ -209,7 +209,7 @@ export const productsVariations: ProductInfo[] = [
         price: 969,
     },
     {
-        productId: '1',
+        productId: '98df7a545716',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
@@ -217,7 +217,7 @@ export const productsVariations: ProductInfo[] = [
         price: 799,
     },
     {
-        productId: '1',
+        productId: '98df7a545716',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
@@ -225,7 +225,7 @@ export const productsVariations: ProductInfo[] = [
         price: 969,
     },
     {
-        productId: '2',
+        productId: '6d5bd9568bb3',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
@@ -233,7 +233,7 @@ export const productsVariations: ProductInfo[] = [
         price: 549,
     },
     {
-        productId: '2',
+        productId: '6d5bd9568bb3',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
@@ -241,7 +241,7 @@ export const productsVariations: ProductInfo[] = [
         price: 839,
     },
     {
-        productId: '2',
+        productId: '6d5bd9568bb3',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
@@ -249,7 +249,7 @@ export const productsVariations: ProductInfo[] = [
         price: 979,
     },
     {
-        productId: '2',
+        productId: '6d5bd9568bb3',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
@@ -257,7 +257,7 @@ export const productsVariations: ProductInfo[] = [
         price: 839,
     },
     {
-        productId: '2',
+        productId: '6d5bd9568bb3',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
@@ -265,7 +265,7 @@ export const productsVariations: ProductInfo[] = [
         price: 879,
     },
     {
-        productId: '3',
+        productId: '60603aa874b7',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
@@ -273,7 +273,7 @@ export const productsVariations: ProductInfo[] = [
         price: 579,
     },
     {
-        productId: '3',
+        productId: '60603aa874b7',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
@@ -281,7 +281,7 @@ export const productsVariations: ProductInfo[] = [
         price: 849,
     },
     {
-        productId: '3',
+        productId: '60603aa874b7',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
@@ -289,7 +289,7 @@ export const productsVariations: ProductInfo[] = [
         price: 999,
     },
     {
-        productId: '3',
+        productId: '60603aa874b7',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
@@ -297,7 +297,7 @@ export const productsVariations: ProductInfo[] = [
         price: 849,
     },
     {
-        productId: '3',
+        productId: '60603aa874b7',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
@@ -305,7 +305,7 @@ export const productsVariations: ProductInfo[] = [
         price: 999,
     },
     {
-        productId: '4',
+        productId: '0f325022a161',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
@@ -313,7 +313,7 @@ export const productsVariations: ProductInfo[] = [
         price: 519,
     },
     {
-        productId: '4',
+        productId: '0f325022a161',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
@@ -321,7 +321,7 @@ export const productsVariations: ProductInfo[] = [
         price: 749,
     },
     {
-        productId: '4',
+        productId: '0f325022a161',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
@@ -329,7 +329,7 @@ export const productsVariations: ProductInfo[] = [
         price: 939,
     },
     {
-        productId: '4',
+        productId: '0f325022a161',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
@@ -337,7 +337,7 @@ export const productsVariations: ProductInfo[] = [
         price: 749,
     },
     {
-        productId: '4',
+        productId: '0f325022a161',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
@@ -345,7 +345,7 @@ export const productsVariations: ProductInfo[] = [
         price: 939,
     },
     {
-        productId: '5',
+        productId: '4e609b409ae5',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
@@ -353,7 +353,7 @@ export const productsVariations: ProductInfo[] = [
         price: 329,
     },
     {
-        productId: '5',
+        productId: '4e609b409ae5',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
@@ -361,7 +361,7 @@ export const productsVariations: ProductInfo[] = [
         price: 559,
     },
     {
-        productId: '5',
+        productId: '4e609b409ae5',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
@@ -369,7 +369,7 @@ export const productsVariations: ProductInfo[] = [
         price: 679,
     },
     {
-        productId: '5',
+        productId: '4e609b409ae5',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
@@ -377,7 +377,7 @@ export const productsVariations: ProductInfo[] = [
         price: 559,
     },
     {
-        productId: '5',
+        productId: '4e609b409ae5',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
@@ -385,7 +385,7 @@ export const productsVariations: ProductInfo[] = [
         price: 679,
     },
     {
-        productId: '6',
+        productId: '0a25d67df8cb',
         doughType: 'traditional',
         size: 'small',
         weight: '400 г',
@@ -393,7 +393,7 @@ export const productsVariations: ProductInfo[] = [
         price: 529,
     },
     {
-        productId: '6',
+        productId: '0a25d67df8cb',
         doughType: 'traditional',
         size: 'middle',
         weight: '590 г',
@@ -401,7 +401,7 @@ export const productsVariations: ProductInfo[] = [
         price: 769,
     },
     {
-        productId: '6',
+        productId: '0a25d67df8cb',
         doughType: 'traditional',
         size: 'large',
         weight: '820 г',
@@ -409,7 +409,7 @@ export const productsVariations: ProductInfo[] = [
         price: 889,
     },
     {
-        productId: '6',
+        productId: '0a25d67df8cb',
         doughType: 'thin',
         size: 'middle',
         weight: '440 г',
@@ -417,7 +417,7 @@ export const productsVariations: ProductInfo[] = [
         price: 769,
     },
     {
-        productId: '6',
+        productId: '0a25d67df8cb',
         doughType: 'thin',
         size: 'large',
         weight: '690 г',
@@ -425,7 +425,7 @@ export const productsVariations: ProductInfo[] = [
         price: 889,
     },
     {
-        productId: '7',
+        productId: 'c46b7f35fa2f',
         weight: '0.3 л',
         img: '11ee7d61aed6b6d4bfdad4e58d76cf56.avif',
         price: 169,

@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react';
 import { Button, Container } from '../../ui'
-import { BasketItem } from './basket-item/Basket-item';
 import styles from './styles.module.scss'
 import clsx from 'clsx';
 import { MoveRight, X } from 'lucide-react';
-import { basketItem } from '../../types/types';
 
 export interface basketProps {
     isOpen: boolean;
@@ -17,49 +15,6 @@ export const Basket = ({ onClose, isOpen }: basketProps) => {
     const count = 3;
     const price = 2245;
     const tax = Math.floor(price * 0.05);
-    const order: basketItem[] = [{
-        title: 'Баварская',
-        price: 799,
-        image: 'https://media.dodostatic.net/image/r:760x760/019591a2e222794a81731c99f3cc34ec.avif',
-        count: 1,
-        description: '30 см, традиционное тесто, 590 г'
-    },
-    {
-        title: 'Баварская',
-        price: 799,
-        image: 'https://media.dodostatic.net/image/r:760x760/019591a2e222794a81731c99f3cc34ec.avif',
-        count: 1,
-        description: '30 см, традиционное тесто, 590 г'
-    },
-    {
-        title: 'Баварская',
-        price: 799,
-        image: 'https://media.dodostatic.net/image/r:760x760/019591a2e222794a81731c99f3cc34ec.avif',
-        count: 1,
-        description: '30 см, традиционное тесто, 590 г'
-    },
-    {
-        title: 'Баварская',
-        price: 799,
-        image: 'https://media.dodostatic.net/image/r:760x760/019591a2e222794a81731c99f3cc34ec.avif',
-        count: 1,
-        description: '30 см, традиционное тесто, 590 г'
-    },
-    {
-        title: 'Баварская',
-        price: 799,
-        image: 'https://media.dodostatic.net/image/r:760x760/019591a2e222794a81731c99f3cc34ec.avif',
-        count: 1,
-        description: '30 см, традиционное тесто, 590 г'
-    },
-    {
-        title: 'Баварская',
-        price: 799,
-        image: 'https://media.dodostatic.net/image/r:760x760/019591a2e222794a81731c99f3cc34ec.avif',
-        count: 1,
-        description: '30 см, традиционное тесто, 590 г'
-    }
-    ];
 
     useEffect(() => {
         const handleEscape = (e: KeyboardEvent) => {
@@ -91,9 +46,8 @@ export const Basket = ({ onClose, isOpen }: basketProps) => {
             <h3 className={clsx('text text_size_medium  m-0 default', styles.title)} >В корзине <span className={styles.bold_text}>{count} товара</span></h3>
             
             <Container className={styles.items__container}>
-                {order.map((item) => (
-                    <BasketItem item={item} />
-                ))}
+                <></>
+                    {/* <BasketItem item={item} /> */}
             </Container>
 
             <Container className={styles.footer}>

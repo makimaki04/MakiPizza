@@ -3,10 +3,10 @@ import { Button, Container } from "../../../ui";
 import styles from "./styles.module.scss"
 import clsx from "clsx";
 import { useState } from "react";
-import { basketItem } from "../../../types/types";
+import { BasketItemType } from "../../../types/types";
 
 export interface BasketItemProps {
-    item: basketItem;
+    item: BasketItemType;
 }
 
 export const BasketItem = ({ item }: BasketItemProps) => {

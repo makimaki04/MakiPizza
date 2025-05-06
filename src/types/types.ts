@@ -28,16 +28,19 @@ export type RegularProductInfo = BaseProductInfo & {
 
 export type ProductInfo = PizzaInfo | RegularProductInfo;
 
-export type Ingredient = {
+export type IngredientType = {
+    id: string;
     title: string;
     price: number;
-    src: string;
 }
 
-export type basketItem = {
+export type BasketItemType = {
+    id: string;
+    productId: string
     title: string;
     description: string;
     price: number;
+    ingredients: IngredientType[];
     image: string;
     count: number;
 }

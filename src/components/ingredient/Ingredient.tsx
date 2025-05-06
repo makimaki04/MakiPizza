@@ -8,31 +8,16 @@ interface IngredientProps {
     price: number;
     src: string;
     isChecked: boolean;
-    onClick: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    onClick: (id: string) => void;
 }
 
 export const Ingredient = ({ id, title, price, src, onClick, isChecked }: IngredientProps) => {
     const handleClick = () => {
-        const mockEvent = {
-            target: {
-                id,
-                value: price,
-                checked: !isChecked,
-            }
-        } as unknown as React.ChangeEvent<HTMLInputElement>;
-
-        onClick(mockEvent);
+        onClick(id);
     }
 
     return (
         <div onClick={handleClick} className={clsx('text_size_small text',styles.ingredient, isChecked && styles.checked)}>
-            <input 
-              id={id}
-              type="checkbox"
-              checked={isChecked}
-              value={price}
-              className={styles.hidden__input}
-            />
             <img src={src} alt={title} className={styles.image} />
             <p className={clsx(styles.title, 'm-0')}>{title}</p>
             <p className={clsx(styles.price, 'm-0')}>{price} ₽</p>
