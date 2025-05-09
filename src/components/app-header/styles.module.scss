@@ -26,10 +26,6 @@
     gap: 15px;
 }
 
-.user__icon {
-    padding-bottom: 2px;
-}
-
 .separator {
     width: 1px;
     height: 20px;
@@ -40,7 +36,13 @@
 .basket__Container {
     display: flex;
     gap: 3px;
+    align-items: center;
+    justify-content: center;
     position: relative;
+
+    .cart__icon {
+        padding-bottom: 2px;
+    }
 }
 
 .basket__button_container {
@@ -90,6 +92,10 @@
     background-color: transparent;
     line-height: 20px;
     color: var(--orange-color);
+
+    &.login {
+        gap: 4px;
+    }
     
     &:hover {
         color: #FFFFFF;

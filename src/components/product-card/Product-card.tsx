@@ -6,12 +6,12 @@
     import { X } from "lucide-react";
     import { useProductInfo } from "../../hooks/useProductInfo";
     import { Ingredient } from "../ingredient/Ingredient";
-    import { BasketItemType, IngredientType, Product } from "../../types/types";
+    import { TBasketItem, TIngredient, TProduct } from "../../types/types";
 import { nanoid } from "@reduxjs/toolkit";
 
     export interface ProductCardProps {
-        product: Product;
-        onAdd: (basketItem: BasketItemType) => void;
+        product: TProduct;
+        onAdd: (basketItem: TBasketItem) => void;
         onClose: () => void
     }
 
@@ -107,17 +107,20 @@ import { nanoid } from "@reduxjs/toolkit";
         const timerRef = useRef<any>();
 
         const handleAddToCart = () => {
-            const ingredientsList: IngredientType[] = selectedIngredients.filter(ing => ing.isSelected)
-                .map(({ id, title, price }) => ({ id, title, price }));
+            const ingredientsList: TIngredient[] = selectedIngredients.filter(ing => ing.isSelected)
+                .map(({ id, title, price }) => ({ id, title, price })).sort();
 
             const baseDescription = description.join(', ');
-            const addedIngredients = ingredientsList.map(ing => ing.title).join(', ');
+            const addedIngredients = ingredientsList.map(ing => ing.title).sort().join(', ');
 
             const itemDescription = ingredientsList.length > 0
                 ? `${baseDescription} + ${addedIngredients}` 
                 : baseDescription;
 
-            const basketItem: BasketItemType = {
+            const type = category === 'pizza' ? 'pizza' : 'other';
+
+            const basketItem: TBasketItem = {
+                type,
                 id: nanoid(),
                 productId: id,
                 title: title,

@@ -1,11 +1,11 @@
 import { useMemo } from "react";
-import { Product, SortType } from "../../types/types";
+import { TProduct, SortType } from "../../types/types";
 import { Container } from "../../ui";
 import { ProductItem } from "../product-item/Product-item";
 import styles from "./styles.module.scss"
 
 export interface ProductListProps {
-    products: Product[];
+    products: TProduct[];
     sortBy: SortType;
 }
 

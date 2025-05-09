@@ -3,17 +3,21 @@ import { Button, Container } from '../../ui';
 import styles from './styles.module.scss'
 import { useState } from 'react';
 import { ProductCard } from '../index';
-import { BasketItemType, Product } from '../../types/types';
+import { TBasketItem, TProduct } from '../../types/types';
+import { useAppDispatch } from '../../store/store';
+import { addToBasket } from '../../store/slices/Basket/BasketSlice';
 
 export interface ProductCardProps {
-    product: Product;
+    product: TProduct;
 }
 
 export const ProductItem = ({ product }: ProductCardProps) => {
     const { title, src, description, price} = product;
     const [ isOpen, setIsOpen ] = useState<boolean>(false);
+    const dispatch = useAppDispatch();
 
-    const handleAddToCart = (basketItem: BasketItemType) => {
+    const handleAddToCart = (basketItem: TBasketItem) => {
+        dispatch(addToBasket(basketItem));
         onClose();
     }
 

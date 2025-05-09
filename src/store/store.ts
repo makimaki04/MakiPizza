@@ -3,9 +3,10 @@ import {
     useDispatch,
     useSelector
   } from 'react-redux';
+import { BasketSlice } from "./slices/Basket/BasketSlice";
 
 export const rootReducer = combineReducers({
-
+  [BasketSlice.name]: BasketSlice.reducer,
 });
 
 const store = configureStore({

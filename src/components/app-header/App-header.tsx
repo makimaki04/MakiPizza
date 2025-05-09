@@ -4,12 +4,14 @@ import styles from "./styles.module.scss";
 import clsx from "clsx";
 import { Basket } from "../index"
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getBasketItemsCount, selectTotalPrice } from "../../store/slices/Basket/BasketSlice";
 
 export const AppHeader = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const price = 0;
-  const count = 3;
+  const count = useSelector(getBasketItemsCount);
+  const price = useSelector(selectTotalPrice);
 
   const onOverlayClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -52,7 +54,7 @@ export const AppHeader = () => {
           <Search />
 
           <Container className={styles.buttons__container}>
-            <Button type="button" className={styles.button}>
+            <Button type="button" className={clsx(styles.button, styles.login)}>
               <User className={styles.user__icon} size={16} />
               Войти
             </Button>
@@ -64,7 +66,7 @@ export const AppHeader = () => {
                   {`${price} ₽`}
                   <span className={styles.separator} />
                   <Container className={styles.basket__Container}>
-                    <ShoppingCart size={16} />
+                    <ShoppingCart className={styles.cart__icon} size={16} />
                     {count}
                   </Container>
                   <ArrowRight size={20} className={styles.basket__arrow} />

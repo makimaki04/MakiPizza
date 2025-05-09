@@ -1,4 +1,4 @@
-import { Product, ProductInfo } from "../types/types";
+import { TProduct, ProductInfo } from "../types/types";
 
 export const categories = [
   "Пиццы",
@@ -120,7 +120,7 @@ export const ingredients = [
     }
 ]
 
-export const pizza: Product[] = [
+export const pizza: TProduct[] = [
     {   
         id: '98df7a545716',
         title: 'Баварская', 

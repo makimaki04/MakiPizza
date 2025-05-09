@@ -4,7 +4,7 @@
       width: 445px;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       background: #F4F1EE;
       transition: transform 0.3s ease;
       transform: translateX(100%);
@@ -23,6 +23,20 @@
 
       .title {
         padding: 20px;
+      }
+
+      .empty__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        align-self: center;
+  
+        .empty__image {
+          width: 314px;
+          height: 205px;
+        }
       }
 
       .items__container {

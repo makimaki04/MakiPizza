@@ -1,6 +1,6 @@
 import { SORT_OPTIONS } from "../constant/sort";
 
-export type Product = {
+export type TProduct = {
     id: string;
     title: string;
     price: number;
@@ -28,21 +28,31 @@ export type RegularProductInfo = BaseProductInfo & {
 
 export type ProductInfo = PizzaInfo | RegularProductInfo;
 
-export type IngredientType = {
+export type TIngredient = {
     id: string;
     title: string;
     price: number;
 }
 
-export type BasketItemType = {
+export type TBaseBasketItem = {
     id: string;
-    productId: string
+    productId: string;
     title: string;
     description: string;
     price: number;
-    ingredients: IngredientType[];
     image: string;
     count: number;
-}
+};
+
+export type TPizzaBasketItem = TBaseBasketItem & {
+    type: 'pizza';
+    ingredients: TIngredient[];
+};
+
+export type TOtherBasketItem = TBaseBasketItem & {
+    type: 'other';
+};
+
+export type TBasketItem = TPizzaBasketItem | TOtherBasketItem;
 
 export type SortType = keyof typeof SORT_OPTIONS;
