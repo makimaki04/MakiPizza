@@ -86,12 +86,16 @@ cd MakiPizza
 ```
 ### 2. Запуск проекта
 # фронтенд
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
 # бэкенд
+```bash
 cd backend
 npm install
 npm run start:dev
+```
 
