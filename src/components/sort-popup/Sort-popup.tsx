@@ -3,28 +3,33 @@ import { Button, Container } from "../../ui";
 import styles from "./styles.module.scss"
 import clsx from "clsx";
 import { useState } from "react";
+import { SortType } from "../../types/types";
+import { SORT_OPTIONS } from "../../constant/sort";
 
-const categories = ['по рейтингу', 'по цене'];
+interface SortPopupProps {
+    onChange: (sortType: SortType) => void;
+}
 
-export function SortPopup() {
-    const [category, setCategory] = useState<string>(categories[0]);
+export const SortPopup = ({ onChange }: SortPopupProps) => {
+    const [currentSort, setCurrentSort] = useState<SortType>('rating');
 
-    const onClick = (index: number) => {
-        setCategory(categories[index]);
+    const handleSortChange = (sortKey: SortType) => {
+        setCurrentSort(sortKey);
+        onChange(sortKey)
     }
 
     return <>
         <Container className={styles.container}>
             <ArrowUpDown className={styles.icon} size={16} />
             <p className={clsx('text', 'm-0', 'text_size_middle')}>Сортировка:</p>
-            <Button type='button' className={styles.button}>
-                {category}
-                 <span className={styles.popup}>
-                    {categories.map((category, index) => (
-                        <Button type='button' onClick={() => {onClick(index)}} className={styles.category__button}>{category}</Button>
+            <Button type="button" className={styles.button}>
+                {SORT_OPTIONS[currentSort]}
+                <span className={styles.popup}>
+                    {Object.entries(SORT_OPTIONS).map(([key, label]) => (
+                        <div key={key} role='button' onClick={() => {handleSortChange(key as SortType)}} className={styles.category__button}>{label}</div>
                     ))}
-                 </span>
-                 </Button>
+                </span>
+            </Button>
         </Container>
     </>
 }

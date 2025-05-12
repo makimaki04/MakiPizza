@@ -8,7 +8,7 @@ interface CheckBoxGroupProps {
   title: string;
 }
 
-export function CheckBoxGroup({items, title}: CheckBoxGroupProps) {
+export const CheckBoxGroup = ({items, title}: CheckBoxGroupProps) => {
   return (
     <>
       <div>

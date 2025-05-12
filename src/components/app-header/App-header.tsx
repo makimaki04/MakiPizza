@@ -2,10 +2,32 @@ import { ArrowRight, ShoppingCart, User } from "lucide-react";
 import { Button, Container, Logo, Search } from "../../ui";
 import styles from "./styles.module.scss";
 import clsx from "clsx";
+import { Basket } from "../index"
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { getBasketItemsCount, selectTotalPrice } from "../../store/slices/Basket/BasketSlice";
 
-export function AppHeader() {
-  const price = "1500";
-  const count = 3;
+export const AppHeader = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+
+  const count = useSelector(getBasketItemsCount);
+  const price = useSelector(selectTotalPrice);
+
+  const onOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+        onClose();
+    }
+  }
+
+
+  const onClose = () => {
+    setIsOpen(false);
+  }
+
+  const onOpen = () => {
+    setIsOpen(true);
+  }
+
   return (
     <>
       <header className={styles.header}>
@@ -32,24 +54,32 @@ export function AppHeader() {
           <Search />
 
           <Container className={styles.buttons__container}>
-            <Button type="button" className={styles.button}>
+            <Button type="button" className={clsx(styles.button, styles.login)}>
               <User className={styles.user__icon} size={16} />
               Войти
             </Button>
 
             <Container className={styles.basket__button_container}>
-              <Button type="button" className={styles.button}>
-                {price + " ₽"}
-                <span className={styles.separator} />
-                <Container className={styles.basket__Container}>
-                  <ShoppingCart size={16} />
-                  {count}
-                </Container>
-                <ArrowRight size={20} className={styles.basket__arrow} />
+              <Button type="button" className={styles.button} onClick={onOpen} >
+              {!price ? 'Корзина' : (
+                <>
+                  {`${price} ₽`}
+                  <span className={styles.separator} />
+                  <Container className={styles.basket__Container}>
+                    <ShoppingCart className={styles.cart__icon} size={16} />
+                    {count}
+                  </Container>
+                  <ArrowRight size={20} className={styles.basket__arrow} />
+                </>
+              )}
               </Button>
             </Container>
           </Container>
         </Container>
+      
+        <div className={clsx(styles.overlay, {[styles.open]: isOpen})} onClick={onOverlayClick}>
+          <Basket onClose={onClose} isOpen={isOpen} />
+        </div>
       </header>
     </>
   );

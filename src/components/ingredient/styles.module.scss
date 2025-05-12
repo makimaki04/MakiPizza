@@ -1,0 +1,62 @@
+.ingredient {
+    width: calc(33.3333% - 8px);
+    height: 193px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    background: #ffff;
+    box-shadow: rgba(6, 5, 50, 0.12) 0px 4px 20px;
+    cursor: pointer;
+    transition: 300ms;
+
+    &.checked {
+        border-color: var(--orange-color);
+        box-shadow: none;
+    }
+
+    &:hover {
+        box-shadow: none;
+    }
+
+    .hidden__input {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .image {
+        margin-top: 5px;
+        width: 100%;
+        height: auto;
+        max-height: 100px;
+        object-fit: contain;
+    }
+
+    .title {
+        height: 32px;
+        text-align: center;
+    }
+
+    .price {
+        font-weight: 600;
+    }
+
+    .check__mark {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        color: var(--orange-color);
+        transition: 300ms;
+        opacity: 0;
+
+        &_active {
+            opacity: 1;
+            transition: 300ms;
+        }
+    }
+}

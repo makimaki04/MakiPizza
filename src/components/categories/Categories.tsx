@@ -3,17 +3,11 @@ import { Button, Container } from "../../ui";
 import styles from "./styles.module.scss";
 import { useState } from "react";
 
-const categories = [
-  "Пиццы",
-  "Комбо",
-  "Закуски",
-  "Коктейли",
-  "Кофе",
-  "Напитки",
-  "Десерты",
-];
+export interface CategoriesProps {
+  categories: string[];
+}
 
-export function Categories() {
+export const Categories = ({ categories }: CategoriesProps) => {
     const [activeIndex, setActiveIndex] = useState<number>(0);
     
     const onClick = (index: number) => {
@@ -24,7 +18,7 @@ export function Categories() {
     <>
       <Container className={styles.container}>
         {categories.map((category, index) => (
-            <Button type="button" onClick={() => onClick(index)} className={clsx(styles.category, activeIndex === index && styles.category__active)}>{category}</Button>
+            <Button key={index} type="button" onClick={() => onClick(index)} className={clsx(styles.category, activeIndex === index && styles.category__active)}>{category}</Button>
         ))}
       </Container>
     </>

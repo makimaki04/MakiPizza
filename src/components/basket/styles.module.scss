@@ -1,0 +1,139 @@
+.basket {
+    &__container {
+      height: 100%;
+      width: 445px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: #F4F1EE;
+      transition: transform 0.3s ease;
+      transform: translateX(100%);
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 1000000;
+      
+      &.open {
+        transform: translateX(0);
+      }
+  
+      .bold_text {
+        font-weight: 700;
+      }
+
+      .title {
+        padding: 20px;
+      }
+
+      .empty__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        align-self: center;
+  
+        .empty__image {
+          width: 314px;
+          height: 205px;
+        }
+      }
+
+      .items__container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        justify-content: flex-start;
+        overflow-x: auto;
+
+        &::-webkit-scrollbar {
+          width: 6px;
+          height: 20px;
+        }
+  
+        &::-webkit-scrollbar-track {
+          background: #f1f1f100;
+          border-radius: 3px;
+          transition: 300ms;
+        }
+    
+        &::-webkit-scrollbar-thumb {
+          background: rgba(86, 86, 86, 0.3);
+          border-radius: 3px;
+        }
+    
+        &::-webkit-scrollbar-thumb:hover {
+          cursor: pointer;
+          background: rgba(0, 0, 0, 0.423);
+        }
+      }
+      
+      .footer {
+        padding: 35px;
+        display: flex;
+        flex-direction: column;
+        gap: 13px;
+        position: relative;
+        background: #FFF;
+        box-shadow: rgba(6, 5, 50, 0.1) 0px -2px 5px;
+        
+        .footer__text {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .order__button {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 17px 0;
+            background: var(--orange-color);
+            border: 0;
+            border-radius: 18px;
+            color: #FFF;
+            position: relative;
+            
+            &:hover .arrow {
+                z-index: 100000000000000000;
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            &:hover {
+                cursor: pointer;
+                transition: 300ms;
+                background-color: rgb(232, 97, 0);
+                color: rgb(255, 255, 255);
+            }
+
+            .arrow {
+              position: absolute;
+              top: 17px;
+              right: 15px;
+              opacity: 0;
+              transition: transform 0.3s ease;
+              transform: translateX(-25%);
+          } 
+        }
+        
+
+      }
+
+      .close__button {
+        position: absolute;
+        top: calc(50% - 12px);
+        left: -55px;
+        border: none;
+        padding: 0;
+        background: transparent;
+        transition: 500ms;
+
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.1) rotate(180deg);
+        }
+      }
+    }
+  }
