@@ -72,7 +72,7 @@
 
 Связаться:
 - Telegram: [@makimaki04](https://t.me/makimaki04)
-- Email: _ваш email, если хотите добавить_
+- Email: goodd214080@gmail.com
 
 ---
 
