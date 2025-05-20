@@ -6,6 +6,7 @@ import { MoveRight, X } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import { getBasketItemsCount, selectBasketItems, selectTotalPrice } from '../../store/slices/Basket/BasketSlice';
 import { BasketItem } from './basket-item/Basket-item';
+import { useNavigate } from 'react-router-dom';
 
 export interface basketProps {
     isOpen: boolean;
@@ -18,6 +19,7 @@ export const Basket = ({ onClose, isOpen }: basketProps) => {
     const count = useSelector(getBasketItemsCount);
     const price = useSelector(selectTotalPrice);
     const tax = Math.floor(price * 0.05);
+    const navigate = useNavigate();
 
     const getItemsCountText = (count: number) => {
         if (count % 10 === 1 && count % 100 !== 11) {
@@ -52,7 +54,13 @@ export const Basket = ({ onClose, isOpen }: basketProps) => {
             document.body.style.overflow = '';
             document.body.style.paddingRight = '';
           }, 300)
-    }   
+    }
+    
+    const onBtnClick = () => {
+        document.body.style.overflow = '';
+        document.body.style.paddingRight = '';
+        navigate('/order/');
+    }
 
     return (
         <Container className={clsx(styles.basket__container, {[styles.open]: isOpen})}>
@@ -84,7 +92,7 @@ export const Basket = ({ onClose, isOpen }: basketProps) => {
                     
                     <Container className={styles.items__container}>
                         {basketItems.map((item) => (
-                            <BasketItem item={item} key={item.id} />
+                            <BasketItem item={item} separator={true} className={styles.item__container} key={item.id} />
                         ))}
                     </Container>
 
@@ -97,7 +105,11 @@ export const Basket = ({ onClose, isOpen }: basketProps) => {
                             Налог 5%: <span className={styles.bold_text}>{tax} ₽</span>
                         </p>
 
-                        <Button type="button" className={clsx('text bold', styles.order__button)}>
+                        <Button 
+                        type="button" 
+                        className={clsx('text bold', styles.order__button)}
+                        onClick={onBtnClick}
+                        >
                             К оформлению заказа
                             <MoveRight size={25} className={styles.arrow} />
                         </Button>
