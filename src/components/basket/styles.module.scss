@@ -67,6 +67,13 @@
           cursor: pointer;
           background: rgba(0, 0, 0, 0.423);
         }
+
+        .item__container {
+              padding: 20px;
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+        }
       }
       
       .footer {

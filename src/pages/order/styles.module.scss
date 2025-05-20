@@ -1,0 +1,118 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 45px;
+    background: #F4F1EE;
+    padding-bottom: 110px;
+
+    .header {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1312px;
+        padding: 44px 0 42px;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #DEDEDE;
+        position: relative;
+
+        .button {
+            width: max-content;
+            padding: 8px 22px 6px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            border: 1px solid #FE5F00;
+            border-radius: 15px;
+            background-color: transparent;
+            line-height: 20px;
+            color: var(--orange-color);
+
+            &.login {
+                gap: 4px;
+            }
+            
+            &:hover {
+                color: #FFFFFF;
+                background-color: var(--orange-color);
+                transition: 300ms;
+                cursor: pointer;
+            }
+            
+            &:focus {
+                outline: none;
+            }
+
+            &:focus-visible {
+                outline: 1px solid var(--orange-color);
+            }
+        }
+    }
+
+    .title__container {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1312px;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .order__container {
+        width: 100%;
+        margin: 0 auto;
+        max-width: 1312px;
+        display: grid;
+        
+        .order__info__block {
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+
+            .info__container {
+            align-self: flex-start;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 752px;
+            background: #fff;
+            border-radius: 30px;
+
+            .contact__info__form {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 26px;
+                row-gap: 15px;
+            }
+
+            .form__field {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                margin-bottom: 20px;
+            
+                .input {
+                    padding: 13px 18px;
+                    border: 1px solid #EFEFEF;
+                    border-radius: 10px;
+                }
+            }
+
+            .separator {
+                width: 100%;
+                height: 1px;
+                background: #EDEDED;
+            }
+            }
+
+            .basket__container {
+
+                .basket__item {
+                    padding: 7px;
+                    display: flex;
+                    gap: 70px;
+                }
+            }
+        }
+    }
+}
