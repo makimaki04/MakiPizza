@@ -16,6 +16,35 @@
         border-bottom: 1px solid #DEDEDE;
         position: relative;
 
+        &__button__container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .arrow__button {
+            padding: 5px 15px 0 15px;
+            border: 1px solid #FE5F00;
+            border-radius: 15px;
+            background-color: transparent;
+            line-height: 20px;
+            color: var(--orange-color);
+
+            &:hover {
+                color: #FFFFFF;
+                background-color: var(--orange-color);
+                transition: 300ms;
+                cursor: pointer;
+            }
+            
+            &:focus {
+                outline: none;
+            }
+
+            &:focus-visible {
+                outline: 1px solid var(--orange-color);
+            }
+        }
+
         .button {
             width: max-content;
             padding: 8px 22px 6px;
@@ -61,48 +90,149 @@
         width: 100%;
         margin: 0 auto;
         max-width: 1312px;
-        display: grid;
+        display: flex;
+        gap: 45px;
+
+        
+        .cost__container {
+            width: 100%;
+            max-width: 450px;
+            position: sticky;
+            left: 0;
+            top: 30px;
+            padding: 40px 40px;
+            height: min-content;
+            display: flex;
+            flex-direction: column;
+            gap: 27px;
+            background: #fff;
+            border-radius: 30px;
+
+            .price__container {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            .cost__info__container {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                .cost__info {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .description__block {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+
+                        .icon {
+                            color: #B9B9B9;
+                        }
+
+                        .description {
+                            align-self: flex-start;
+                            justify-self: flex-start;
+                        }
+                    }
+
+                    .price {
+                        align-self: flex-end;
+                        justify-self: flex-end;
+                    }
+                }
+            }
+
+            .confirm__button {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 17px 0;
+                background: var(--orange-color);
+                border: 0;
+                border-radius: 18px;
+                color: #FFF;
+                position: relative;
+                
+                &:hover .arrow {
+                    z-index: 100000000000000000;
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    transition: 300ms;
+                    background-color: rgb(232, 97, 0);
+                    color: rgb(255, 255, 255);
+                }
+
+                .arrow {
+                    position: absolute;
+                    top: 17px;
+                    right: 15px;
+                    opacity: 0;
+                    transition: transform 0.3s ease;
+                    transform: translateX(-25%);
+                } 
+            }
+        }
         
         .order__info__block {
             display: flex;
             flex-direction: column;
             gap: 45px;
+            width: 100%;
+            max-width: 752px;
 
             .info__container {
-            align-self: flex-start;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            width: 752px;
-            background: #fff;
-            border-radius: 30px;
-
-            .contact__info__form {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                column-gap: 26px;
-                row-gap: 15px;
-            }
-
-            .form__field {
+                align-self: flex-start;
+                padding: 30px;
                 display: flex;
                 flex-direction: column;
-                gap: 5px;
-                margin-bottom: 20px;
-            
-                .input {
-                    padding: 13px 18px;
-                    border: 1px solid #EFEFEF;
-                    border-radius: 10px;
-                }
-            }
-
-            .separator {
+                gap: 15px;
+                background: #fff;
+                border-radius: 30px;
                 width: 100%;
-                height: 1px;
-                background: #EDEDED;
-            }
+
+                .contact__info__form {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    column-gap: 26px;
+                    row-gap: 15px;
+                }
+
+                .address__form {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 38px;
+                }
+
+                .form__field {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    margin-bottom: 20px;
+                
+                    .input {
+                        padding: 13px 18px;
+                        border: 1px solid #EFEFEF;
+                        border-radius: 10px;
+                    }
+
+                    .textrea {
+                        min-height: 100px;
+                        padding: 18px;
+                        border: 1px solid #EFEFEF;
+                        border-radius: 10px;
+                        resize: none;
+                    }
+                }
+ 
             }
 
             .basket__container {
@@ -113,6 +243,12 @@
                     gap: 70px;
                 }
             }
+        }
+
+        .separator {
+            width: 100%;
+            height: 1px;
+            background: #EDEDED;
         }
     }
 }

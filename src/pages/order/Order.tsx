@@ -2,9 +2,9 @@ import clsx from "clsx"
 import { BasketItem, Logo } from "../../components"
 import { Button, Container } from "../../ui"
 import styles from './styles.module.scss'
-import { User } from "lucide-react"
+import { MoveLeft, MoveRight, PackageOpen, Percent, Truck, User } from "lucide-react"
 import { useSelector } from "react-redux"
-import { selectBasketItems } from "../../store/slices/Basket/BasketSlice"
+import { selectBasketItems, selectTotalPrice } from "../../store/slices/Basket/BasketSlice"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 
@@ -13,27 +13,46 @@ interface IFormInput {
   lastName: string
   email: string
   phone: string
+  address: string
+  comment?: string
 }
 
 export const Order = () => {
     const basketItems = useSelector(selectBasketItems);
     const navigate = useNavigate();
+    const price = useSelector(selectTotalPrice);
+    const tax = Math.floor(price * 0.05);
+    const delivery = price < 1000 ? 350 : 150; 
+    const cost = price + tax + delivery;
+
     const { 
         register, 
-        handleSubmit, 
         formState: { errors } 
     } = useForm<IFormInput>()
 
     if (basketItems.length === 0) navigate('/')
 
+    const onBackButtonClick = () => {
+        navigate('/');
+    }
+
+    const onBtnClick = () => {
+
+    }
+
     return (
     <Container className={styles.container}>
         <Container className={styles.header}>
             <Logo />
-            <Button type="button" className={clsx(styles.button, styles.login)}>
-              <User className={styles.user__icon} size={16} />
-              Войти
-            </Button>
+            <Container className={styles.header__button__container}>
+                <Button type="button" className={styles.arrow__button} onClick={onBackButtonClick}>
+                    <MoveLeft size={29} />
+                </Button>
+                <Button type="button" className={clsx(styles.button, styles.login)}>
+                    <User className={styles.user__icon} size={16} />
+                    Профиль
+                </Button>
+            </Container> 
         </Container>
         <Container className={styles.title__container}>
              <h2 className={clsx('m-0 p-0 text text_size_large')}>Оформление заказа</h2>
@@ -60,7 +79,7 @@ export const Order = () => {
                         id="firstName"
                         placeholder="Иван"
                         {...register("firstName", {
-                            required: "Имя обязательно",
+                            required: "Введите Ваше имя",
                             pattern: { value: /^[A-Za-zA-Яа-яЁё]+$/, message: 'Имя должно содержать только буквы'}
                         })}
                         className={styles.input}
@@ -74,7 +93,7 @@ export const Order = () => {
                             id="lastName"
                             placeholder="Иванов"
                             {...register("lastName", { 
-                            required: "Фамилия обязательна", 
+                            required: "Введите Вашу фамилию", 
                             pattern: { value: /^[A-Za-zА-Яа-яЁё]+$/, message: "Фамилия должна содержать только буквы" } 
                             })}
                             className={styles.input}
@@ -89,7 +108,7 @@ export const Order = () => {
                             type="tel"
                             placeholder="+7 (999) 123-45-67"
                             {...register("phone", { 
-                            required: "Телефон обязателен", 
+                            required: "Введите номер телефона", 
                             minLength: { value: 10, message: "Минимум 10 цифр" } 
                             })}
                             className={styles.input}
@@ -104,7 +123,7 @@ export const Order = () => {
                             type="email"
                             placeholder="ivan@ivanov.ru"
                             {...register("email", { 
-                            required: "Email обязателен", 
+                            required: "Введите Email", 
                             pattern: { value: /^\S+@\S+\.\S+$/, message: "Некорректный email" } 
                             })}
                             className={styles.input}
@@ -117,23 +136,101 @@ export const Order = () => {
             <Container className={clsx(styles.info__container)}>
                 <h3 className={clsx('text m-0 bold text_size_medium')}>3. Адрес доставки</h3>
                 <span className={styles.separator} />
-                <form className={styles.contact__info__form}>
+                <form className={styles.address__form}>
                     <Container className={styles.form__field}>
                         <label htmlFor="address" className={clsx('text bold text_size_small m-0 p-0')}>Введите адрес</label>
                         <input 
                         id="address"
                         placeholder="Москва, Ленинский пр-т д.12"
-                        {...register("firstName", {
-                            required: "Имя обязательно",
+                        {...register("address", {
+                            required: "Введите адрес",
                             pattern: { value: /^[A-Za-zA-Яа-яЁё]+$/, message: 'Имя должно содержать только буквы'}
                         })}
                         className={styles.input}
                         />
                         {errors.firstName && <p className="error">{errors.firstName.message}</p>}
                     </Container>
+
+                     <Container className={styles.form__field}>
+                        <label htmlFor="comment" className={clsx('text bold text_size_small m-0 p-0')}>Комментарий к заказу</label>
+                        <textarea 
+                        id="comment"
+                        placeholder="Укажите тут дополнительную информацию для курьера"
+                        {...register("comment", {})}
+                        className={styles.textrea}
+                        />
+                        {errors.firstName && <p className="error">{errors.firstName.message}</p>}
+                    </Container>
                 </form>
             </Container>
-           
+            </Container>
+
+            <Container className={styles.cost__container}>
+                <Container className={styles.price__container}>
+                    <p className={clsx('text m-0 p-0 text_size_medium')}>Итого:</p>
+                    <p className={clsx('text m-0 p-0 text_size_medium bold')}>{cost} ₽</p>
+                </Container>
+                    
+                <span className={styles.separator} />
+
+                <Container className={styles.cost__info__container}>
+                        <Container className={styles.cost__info}>
+                            <Container className={styles.description__block}>
+                                <PackageOpen size={15} className={styles.icon} />
+                                <p 
+                                className={clsx('m-0 text text_size_middle', styles.description)}
+                                >
+                                    Стоимость товаров:
+                                </p>
+                            </Container>
+                            <p 
+                            className={clsx('m-0 text text_size_middle bold', styles.price)}
+                            >
+                                {price} ₽
+                            </p>
+                        </Container>
+
+                        <Container className={styles.cost__info}>
+                            <Container className={styles.description__block}>
+                                <Percent size={16} className={styles.icon} />
+                                    <p 
+                                    className={clsx('m-0 text text_size_middle', styles.description)}
+                                    >
+                                        Налоги:
+                                    </p>
+                            </Container>
+                            <p 
+                            className={clsx('m-0 text text_size_middle bold', styles.price)}
+                            >
+                                {tax} ₽
+                            </p>
+                        </Container>
+
+                        <Container className={styles.cost__info}>
+                            <Container className={styles.description__block}>
+                                <Truck size={16} className={styles.icon} />
+                                <p 
+                                className={clsx('m-0 text text_size_middle', styles.description)}
+                                >
+                                    Доставка:
+                                </p>
+                            </Container>
+                            <p 
+                            className={clsx('m-0 text text_size_middle bold', styles.price)}
+                            >
+                                {delivery} ₽
+                            </p>
+                        </Container>
+                </Container>
+
+                    <Button 
+                    type="button" 
+                    className={clsx('text bold', styles.confirm__button)}
+                    onClick={onBtnClick}
+                    >
+                        К оформлению заказа
+                        <MoveRight size={25} className={styles.arrow} />
+                    </Button>
             </Container>
         </Container>
     </Container>
