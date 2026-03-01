@@ -1,8 +1,4 @@
 .basket__item__container {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
     background: #FFF;
 
     .image {
@@ -11,6 +7,7 @@
     }
 
     .image__container {
+        width: 100%;
         display: flex;
         gap: 20px;
         align-items: center;
@@ -30,6 +27,7 @@
     }
 
     .footer {
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;

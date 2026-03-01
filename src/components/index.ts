@@ -1,4 +1,3 @@
-export { App } from "./app/App";
 export { AppHeader } from "./app-header/App-header";
 export { Categories } from "./categories/Categories"
 export { SortPopup } from "./sort-popup/Sort-popup"
@@ -11,3 +10,6 @@ export { ProductCard } from "./product-card/Product-card"
 export { Ingredient } from "./ingredient/Ingredient"
 export { Basket } from "./basket/Basket"
 export { BasketItem } from "./basket/basket-item/Basket-item"
+export { Home } from "./home/Home";
+export { Logo } from "./logo/Logo";
+export { FloatingButtons } from "./floating-buttons/Floating-buttons";

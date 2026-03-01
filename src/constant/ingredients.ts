@@ -4,7 +4,6 @@ export const categories = [
   "Пиццы",
   "Комбо",
   "Закуски",
-  "Коктейли",
   "Кофе",
   "Напитки",
   "Десерты",
@@ -80,7 +79,7 @@ export const ingredients = [
         id: 'cheddar cheese',
         title: 'Сыр чеддер и пармезан',
         price: 99,
-        src: '	https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA69C1FE796'
+        src: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A22FA54A81411E9AFA69C1FE796'
     },
     {
         id: 'jalapeno',
@@ -90,7 +89,7 @@ export const ingredients = [
     },
     {
         id: 'chicken',
-        title: 'нежный цыпленок',
+        title: 'Нежный цыпленок',
         price: 99,
         src: 'https://cdn.dodostatic.net/static/Img/Ingredients/000D3A39D824A82E11E9AFA5B328D35A'
     },

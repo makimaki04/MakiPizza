@@ -8,9 +8,11 @@ import { addToBasket, removeFromBasket } from "../../../store/slices/Basket/Bask
 
 export interface BasketItemProps {
     item: TBasketItem;
+    className: string;
+    separator: boolean;
 }
 
-export const BasketItem = ({ item }: BasketItemProps) => {
+export const BasketItem = ({ item, className, separator }: BasketItemProps) => {
     const dispatch = useAppDispatch();
 
     const handleRemoveClick = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -26,7 +28,7 @@ export const BasketItem = ({ item }: BasketItemProps) => {
     };
 
     return (
-        <Container className={styles.basket__item__container}>
+        <Container className={clsx(styles.basket__item__container, className)}>
             <Container className={styles.image__container}>
                 <img 
                     src={item.image} 
@@ -45,7 +47,7 @@ export const BasketItem = ({ item }: BasketItemProps) => {
                 </Container>
             </Container>
 
-            <span className={styles.separator} />
+            {separator && <span className={styles.separator} />}
 
             <Container className={styles.footer}>
                 <p className={clsx('text m-0 text_size_middle bold')}>

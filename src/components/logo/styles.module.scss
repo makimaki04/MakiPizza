@@ -1,0 +1,14 @@
+.logo__container {
+    display: flex;
+    cursor: pointer;
+
+    .title__container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .logo__description {
+        text-align: center;
+        color: var(--logo-description-text-color);
+    }
+}

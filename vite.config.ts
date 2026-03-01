@@ -8,4 +8,8 @@ export default defineConfig({
     port: 4000
   },
   plugins: [react()],
+  base: '/',
+  build: {
+    outDir: 'dist'
+  }
 })
